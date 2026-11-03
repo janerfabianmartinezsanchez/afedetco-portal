@@ -12,7 +12,7 @@ export const WhatsAppWidget = ({ institutional }) => {
   ];
 
   const handleSend = (text) => {
-    const message = text || customMsg || "Hola Prof. Jeiler, me comunico desde la página oficial de FEDETCO para solicitar información.";
+    const message = text || customMsg || "Hola, me comunico desde la página oficial de FEDETCO para solicitar información y asesoría sindical.";
     const encoded = encodeURIComponent(message);
     const phone = institutional?.whatsapp?.replace(/\D/g, '') || "573169040090";
     const url = `https://wa.me/${phone}?text=${encoded}`;

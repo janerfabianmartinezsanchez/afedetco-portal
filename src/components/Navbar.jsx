@@ -95,7 +95,7 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
               </a>
             </div>
 
-            {/* Acceso WhatsApp Directo a Jeiler */}
+            {/* Acceso WhatsApp Directo */}
             <a 
               href={`https://wa.me/${institutional.whatsapp?.replace(/\D/g, '') || '573169040090'}?text=Hola%20FEDETCO,%20deseo%20informaci%C3%B3n%20sobre%20afiliaci%C3%B3n%20y%20asesor%C3%ADa`}
               target="_blank"
