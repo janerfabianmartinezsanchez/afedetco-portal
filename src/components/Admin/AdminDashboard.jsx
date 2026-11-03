@@ -376,7 +376,7 @@ export const AdminDashboard = ({
                     <p className="text-xs text-slate-500">Autor: <strong className="text-slate-300">{foro.autor}</strong></p>
 
                     <div className="pt-2 border-t border-slate-800 text-xs text-slate-400">
-                      Total aportes registrados: <strong className="text-white">{foro.comentarios?.length || 0}</strong>
+                      Total aportes registrados: <strong className="text-white">{Array.isArray(foro.respuestas) ? foro.respuestas.length : (Array.isArray(foro.comentarios) ? foro.comentarios.length : (foro.comentariosCount || 0))}</strong>
                     </div>
                   </div>
                 ))}

@@ -90,6 +90,11 @@ export const Foro = ({ foros, onAddComentario, onCreateForo }) => {
         <div className="space-y-4">
           {foros.map((foro) => {
             const isExpanded = expandedForoId === foro.id;
+            const comentariosList = Array.isArray(foro.respuestas) 
+              ? foro.respuestas 
+              : (Array.isArray(foro.comentarios) ? foro.comentarios : []);
+            const numAportes = comentariosList.length || (typeof foro.respuestas === 'number' ? foro.respuestas : (foro.comentariosCount || 0));
+
             return (
               <div
                 key={foro.id}
@@ -102,7 +107,7 @@ export const Foro = ({ foros, onAddComentario, onCreateForo }) => {
                 >
                   <div className="space-y-2 flex-1">
                     <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                      <span className="bg-blue-100 text-blue-900 px-2.5 py-0.5 rounded-md font-bold uppercase tracking-wider text-[10px]">
+                      <span className="bg-cyan-100 text-cyan-950 px-2.5 py-0.5 rounded-md font-bold uppercase tracking-wider text-[10px]">
                         {foro.categoria}
                       </span>
                       <span className="text-slate-400">•</span>
@@ -128,8 +133,8 @@ export const Foro = ({ foros, onAddComentario, onCreateForo }) => {
 
                   <div className="flex items-center space-x-3 self-end md:self-center flex-shrink-0">
                     <div className="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1.5">
-                      <MessageSquare className="w-3.5 h-3.5 text-amber-600" />
-                      <span>{foro.respuestas || (foro.comentarios?.length || 0)} aportes</span>
+                      <MessageSquare className="w-3.5 h-3.5 text-cyan-600" />
+                      <span>{numAportes} aportes</span>
                     </div>
                     <div className="text-slate-400 hover:text-slate-700">
                       {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -151,17 +156,17 @@ export const Foro = ({ foros, onAddComentario, onCreateForo }) => {
                     {/* Lista de Comentarios Anteriores */}
                     <div className="space-y-3">
                       <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
-                        Aportes del Magisterio ({foro.comentarios?.length || 0})
+                        Aportes del Magisterio ({numAportes})
                       </h4>
 
-                      {(!foro.comentarios || foro.comentarios.length === 0) ? (
+                      {comentariosList.length === 0 ? (
                         <p className="text-xs text-slate-500 italic">Sé el primero en dejar un aporte en este debate.</p>
                       ) : (
-                        foro.comentarios.map((c) => (
-                          <div key={c.id} className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+                        comentariosList.map((c) => (
+                          <div key={c.id || Math.random()} className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
                             <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500">
                               <span className="font-bold text-blue-950 flex items-center gap-1">
-                                <User className="w-3.5 h-3.5 text-amber-600" />
+                                <User className="w-3.5 h-3.5 text-cyan-600" />
                                 {c.autor}
                               </span>
                               <span className="text-slate-400">{c.fecha}</span>
