@@ -8,46 +8,75 @@ import {
 } from '../data/initialData';
 
 const KEYS = {
-  INSTITUTIONAL: 'fedetco_institutional_v3',
-  NOTICIAS: 'fedetco_noticias_v3',
-  GALERIA: 'fedetco_galeria_v3',
-  FOROS: 'fedetco_foros_v3',
-  DOCUMENTOS: 'fedetco_documentos_v3',
-  SESSION: 'fedetco_session_v3',
-  FIREBASE_CONFIG: 'fedetco_firebase_config_v3'
+  INSTITUTIONAL: 'fedetco_institutional_v4',
+  NOTICIAS: 'fedetco_noticias_v4',
+  GALERIA: 'fedetco_galeria_v4',
+  FOROS: 'fedetco_foros_v4',
+  DOCUMENTOS: 'fedetco_documentos_v4',
+  SESSION: 'fedetco_session_v4',
+  FIREBASE_CONFIG: 'fedetco_firebase_config_v4'
 };
 
 // Inicializa el almacenamiento con datos de FEDETCO
 export const initStorage = () => {
-  if (!localStorage.getItem(KEYS.INSTITUTIONAL)) {
-    localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(INITIAL_INSTITUTIONAL));
-  }
-  if (!localStorage.getItem(KEYS.NOTICIAS)) {
-    localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(INITIAL_NOTICIAS));
-  }
-  if (!localStorage.getItem(KEYS.GALERIA)) {
-    localStorage.setItem(KEYS.GALERIA, JSON.stringify(INITIAL_GALERIA));
-  }
-  if (!localStorage.getItem(KEYS.FOROS)) {
-    localStorage.setItem(KEYS.FOROS, JSON.stringify(INITIAL_FOROS));
-  }
-  if (!localStorage.getItem(KEYS.DOCUMENTOS)) {
-    localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
+  try {
+    if (!localStorage.getItem(KEYS.INSTITUTIONAL)) {
+      localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(INITIAL_INSTITUTIONAL));
+    }
+    if (!localStorage.getItem(KEYS.NOTICIAS)) {
+      localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(INITIAL_NOTICIAS));
+    }
+    if (!localStorage.getItem(KEYS.GALERIA)) {
+      localStorage.setItem(KEYS.GALERIA, JSON.stringify(INITIAL_GALERIA));
+    }
+    if (!localStorage.getItem(KEYS.FOROS)) {
+      localStorage.setItem(KEYS.FOROS, JSON.stringify(INITIAL_FOROS));
+    }
+    if (!localStorage.getItem(KEYS.DOCUMENTOS)) {
+      localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
+    }
+  } catch (e) {
+    console.error("Storage init error:", e);
   }
 };
 
-// Servicios Institucionales
+// Servicios Institucionales con fusión defensiva 100% segura
 export const getInstitutionalData = () => {
   try {
     const data = localStorage.getItem(KEYS.INSTITUTIONAL);
-    return data ? JSON.parse(data) : INITIAL_INSTITUTIONAL;
+    if (!data) return INITIAL_INSTITUTIONAL;
+    const parsed = JSON.parse(data);
+    if (!parsed || typeof parsed !== 'object' || !parsed.nombre) {
+      return INITIAL_INSTITUTIONAL;
+    }
+    return {
+      ...INITIAL_INSTITUTIONAL,
+      ...parsed,
+      redes: { ...INITIAL_INSTITUTIONAL.redes, ...(parsed.redes || {}) },
+      comiteEjecutivo: (Array.isArray(parsed.comiteEjecutivo) && parsed.comiteEjecutivo.length > 0)
+        ? parsed.comiteEjecutivo 
+        : INITIAL_INSTITUTIONAL.comiteEjecutivo,
+      objetivosEstatutarios: (Array.isArray(parsed.objetivosEstatutarios) && parsed.objetivosEstatutarios.length > 0)
+        ? parsed.objetivosEstatutarios 
+        : INITIAL_INSTITUTIONAL.objetivosEstatutarios,
+      principios: (Array.isArray(parsed.principios) && parsed.principios.length > 0)
+        ? parsed.principios 
+        : INITIAL_INSTITUTIONAL.principios,
+      estadisticas: (Array.isArray(parsed.estadisticas) && parsed.estadisticas.length > 0)
+        ? parsed.estadisticas 
+        : INITIAL_INSTITUTIONAL.estadisticas
+    };
   } catch {
     return INITIAL_INSTITUTIONAL;
   }
 };
 
 export const updateInstitutionalData = (updatedData) => {
-  localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(updatedData));
+  try {
+    localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(updatedData));
+  } catch (e) {
+    console.error(e);
+  }
   return updatedData;
 };
 
@@ -55,7 +84,9 @@ export const updateInstitutionalData = (updatedData) => {
 export const getNoticias = () => {
   try {
     const data = localStorage.getItem(KEYS.NOTICIAS);
-    return data ? JSON.parse(data) : INITIAL_NOTICIAS;
+    if (!data) return INITIAL_NOTICIAS;
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_NOTICIAS;
   } catch {
     return INITIAL_NOTICIAS;
   }
@@ -75,14 +106,22 @@ export const saveNoticia = (noticia) => {
     };
     updated = [newNoticia, ...noticias];
   }
-  localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
 export const deleteNoticia = (id) => {
   const noticias = getNoticias();
   const updated = noticias.filter(n => n.id !== id);
-  localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
@@ -90,7 +129,9 @@ export const deleteNoticia = (id) => {
 export const getFotos = () => {
   try {
     const data = localStorage.getItem(KEYS.GALERIA);
-    return data ? JSON.parse(data) : INITIAL_GALERIA;
+    if (!data) return INITIAL_GALERIA;
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_GALERIA;
   } catch {
     return INITIAL_GALERIA;
   }
@@ -109,14 +150,22 @@ export const saveFoto = (foto) => {
     };
     updated = [newFoto, ...fotos];
   }
-  localStorage.setItem(KEYS.GALERIA, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.GALERIA, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
 export const deleteFoto = (id) => {
   const fotos = getFotos();
   const updated = fotos.filter(f => f.id !== id);
-  localStorage.setItem(KEYS.GALERIA, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.GALERIA, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
@@ -124,7 +173,9 @@ export const deleteFoto = (id) => {
 export const getForos = () => {
   try {
     const data = localStorage.getItem(KEYS.FOROS);
-    return data ? JSON.parse(data) : INITIAL_FOROS;
+    if (!data) return INITIAL_FOROS;
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_FOROS;
   } catch {
     return INITIAL_FOROS;
   }
@@ -140,7 +191,11 @@ export const createTemaForo = (nuevoTema) => {
     respuestas: []
   };
   const updated = [tema, ...foros];
-  localStorage.setItem(KEYS.FOROS, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.FOROS, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
@@ -166,7 +221,11 @@ export const addComentarioForo = (foroId, comentario) => {
     }
     return f;
   });
-  localStorage.setItem(KEYS.FOROS, JSON.stringify(updated));
+  try {
+    localStorage.setItem(KEYS.FOROS, JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
   return updated;
 };
 
@@ -186,7 +245,11 @@ export const loginUser = (email, password) => {
       permisos: user.permisos,
       loginAt: new Date().toISOString()
     };
-    localStorage.setItem(KEYS.SESSION, JSON.stringify(session));
+    try {
+      localStorage.setItem(KEYS.SESSION, JSON.stringify(session));
+    } catch (e) {
+      console.error(e);
+    }
     return { success: true, user: session };
   }
   return { success: false, message: 'Credenciales inválidas. Por favor verifique el correo y la contraseña.' };
@@ -202,7 +265,11 @@ export const getCurrentSession = () => {
 };
 
 export const logoutUser = () => {
-  localStorage.removeItem(KEYS.SESSION);
+  try {
+    localStorage.removeItem(KEYS.SESSION);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 // Servicios de Configuración de Firebase
@@ -224,15 +291,23 @@ export const getFirebaseSettings = () => {
 };
 
 export const saveFirebaseSettings = (config) => {
-  localStorage.setItem(KEYS.FIREBASE_CONFIG, JSON.stringify(config));
+  try {
+    localStorage.setItem(KEYS.FIREBASE_CONFIG, JSON.stringify(config));
+  } catch (e) {
+    console.error(e);
+  }
   return config;
 };
 
 // Reiniciar a datos por defecto
 export const resetToDefaults = () => {
-  localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(INITIAL_INSTITUTIONAL));
-  localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(INITIAL_NOTICIAS));
-  localStorage.setItem(KEYS.GALERIA, JSON.stringify(INITIAL_GALERIA));
-  localStorage.setItem(KEYS.FOROS, JSON.stringify(INITIAL_FOROS));
-  localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
+  try {
+    localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(INITIAL_INSTITUTIONAL));
+    localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(INITIAL_NOTICIAS));
+    localStorage.setItem(KEYS.GALERIA, JSON.stringify(INITIAL_GALERIA));
+    localStorage.setItem(KEYS.FOROS, JSON.stringify(INITIAL_FOROS));
+    localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
+  } catch (e) {
+    console.error(e);
+  }
 };
