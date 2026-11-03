@@ -8,7 +8,7 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
     resumen: '',
     contenido: '',
     imagen: '',
-    autor: 'Equipo de Comunicaciones AFEDETCO',
+    autor: 'Equipo de Comunicaciones FEDETCO',
     destacada: false
   });
 
@@ -30,7 +30,7 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
         resumen: '',
         contenido: '',
         imagen: sampleImages[0].url,
-        autor: 'Comité de Prensa AFEDETCO',
+        autor: 'Comité de Prensa FEDETCO',
         destacada: false
       });
     }
@@ -54,7 +54,7 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
               {editingNoticia ? 'Editar Noticia / Comunicado' : 'Publicar Nueva Noticia'}
             </h3>
             <p className="text-xs text-slate-500">
-              Redacta y publica en el portal público de AFEDETCO
+              Redacta y publica en el portal público de FEDETCO
             </p>
           </div>
           <button onClick={onClose} className="p-1 rounded-full text-slate-400 hover:text-slate-700">
@@ -95,7 +95,7 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
               <label className="block text-xs font-bold text-slate-700 mb-1">Autor / Responsable</label>
               <input
                 type="text"
-                placeholder="Ej. Secretaría de Prensa AFEDETCO"
+                placeholder="Ej. Secretaría de Prensa FEDETCO"
                 value={formData.autor}
                 onChange={(e) => setFormData({ ...formData, autor: e.target.value })}
                 className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none"

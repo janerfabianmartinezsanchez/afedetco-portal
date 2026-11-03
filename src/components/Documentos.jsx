@@ -8,17 +8,17 @@ export const Documentos = ({ documentos, institutional }) => {
     // Generar un archivo descargable de texto o simulado
     const blob = new Blob([
       `============================================================\n` +
-      `FEDERACIÓN DE ETNOEDUCADORES DE COLOMBIA (AFEDETCO)\n` +
+      `FEDERACIÓN DE ETNOEDUCADORES DE COLOMBIA (FEDETCO)\n` +
       `NIT: ${institutional.nit} | ${institutional.personeria}\n` +
       `DOCUMENTO OFICIAL: ${doc.titulo}\n` +
       `CATEGORÍA: ${doc.categoria} | FECHA: ${doc.fecha}\n` +
       `============================================================\n\n` +
-      `Este documento certifica la validez del archivo sindical ${doc.titulo} emitido por la Federación de Etnoeducadores de Colombia (AFEDETCO).\n\n` +
+      `Este documento certifica la validez del archivo sindical ${doc.titulo} emitido por la Federación de Etnoeducadores de Colombia (FEDETCO).\n\n` +
       `Puntos Claves:\n` +
       `1. Documento amparado por los artículos 38 y 39 de la Constitución Política de Colombia (Derecho de Asociación Sindical).\n` +
       `2. Validez nacional ante Secretarías de Educación y Ministerio del Trabajo.\n` +
-      `3. Para radicación oficial de afiliación, remita este formulario firmado a contacto@afedetco.org o a la línea WhatsApp ${institutional.whatsapp}.\n\n` +
-      `AFEDETCO - Educación, Cultura, Identidad y Territorio.\n`
+      `3. Para radicación oficial de afiliación, remita este formulario firmado a ${institutional.email || 'contacto@fedetco.org'} o a la línea WhatsApp ${institutional.whatsapp || '+57 316 904 0090'}.\n\n` +
+      `FEDETCO - Educación, Cultura, Identidad y Territorio.\n`
     ], { type: 'text/plain;charset=utf-8' });
 
     const url = URL.createObjectURL(blob);
@@ -48,7 +48,7 @@ export const Documentos = ({ documentos, institutional }) => {
     {
       num: "03",
       titulo: "Enviar por WhatsApp o Email",
-      desc: "Envía los documentos a contacto@afedetco.org o directamente al WhatsApp de Afiliaciones."
+      desc: `Envía los documentos a ${institutional.email || 'contacto@fedetco.org'} o directamente al WhatsApp de Afiliaciones.`
     },
     {
       num: "04",
@@ -112,7 +112,7 @@ export const Documentos = ({ documentos, institutional }) => {
               <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <span className="text-[11px] font-semibold text-slate-500 flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Verificado AFEDETCO</span>
+                  <span>Verificado FEDETCO</span>
                 </span>
 
                 <button
@@ -134,7 +134,7 @@ export const Documentos = ({ documentos, institutional }) => {
               Garantía de Respaldo Sindical
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-              ¿Cómo afiliarte a AFEDETCO en 4 sencillos pasos?
+              ¿Cómo afiliarte a FEDETCO en 4 sencillos pasos?
             </h3>
             <p className="text-sm text-slate-300 mt-2">
               Unidos somos más fuertes. Disfruta de asesoría jurídica gratuita, acompañamiento disciplinario y representación nacional.
@@ -155,7 +155,7 @@ export const Documentos = ({ documentos, institutional }) => {
 
           <div className="text-center pt-2">
             <a
-              href={`https://wa.me/573128495521?text=Hola%20AFEDETCO,%20quiero%20afiliarme%20al%20sindicato%20y%20tengo%20los%20documentos%20listos`}
+              href={`https://wa.me/${institutional.whatsapp?.replace(/\D/g, '') || '573169040090'}?text=Hola%20FEDETCO,%20quiero%20afiliarme%20al%20sindicato%20y%20tengo%20los%20documentos%20listos`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-6 py-3.5 rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5 text-sm"

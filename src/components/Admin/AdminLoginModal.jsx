@@ -45,16 +45,18 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           <X className="w-5 h-5" />
         </button>
 
-        {/* Encabezado */}
+        {/* Encabezado con Logo Oficial FEDETCO */}
         <div className="text-center space-y-2 mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-blue-900 text-amber-400 flex items-center justify-center mx-auto shadow-md">
-            <Lock className="w-7 h-7" />
-          </div>
+          <img 
+            src="/images/fedetco-logo.png" 
+            alt="FEDETCO" 
+            className="w-16 h-16 rounded-full border-2 border-amber-400 object-cover mx-auto shadow-md"
+          />
           <h3 className="text-2xl font-black text-slate-900">
-            Panel de Control CMS
+            Panel CMS FEDETCO
           </h3>
           <p className="text-xs text-slate-500">
-            Acceso administrativo para la gestión de noticias, fotos, foros y contenidos de AFEDETCO.
+            Acceso administrativo para la gestión de noticias, fotos, foros y comunicados de la Federación de Etnoeducadores de Colombia.
           </p>
         </div>
 
@@ -77,7 +79,7 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
               <input
                 type="email"
                 required
-                placeholder="admin@afedetco.org"
+                placeholder="admin@fedetco.org"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-slate-50"
@@ -126,27 +128,27 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button
               type="button"
-              onClick={() => handleQuickLogin('admin@afedetco.org', '123')}
+              onClick={() => handleQuickLogin('admin@fedetco.org', '123')}
               className="p-2.5 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 text-left transition-colors group"
             >
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                <span className="text-xs font-bold text-amber-950">Prof. Jeiler (Sindicato)</span>
+                <span className="text-xs font-bold text-amber-950 truncate">Jeiler Bejarano (Fiscal)</span>
               </div>
-              <p className="text-[10px] text-amber-700 mt-0.5 truncate">admin@afedetco.org</p>
+              <p className="text-[10px] text-amber-700 mt-0.5 truncate">admin@fedetco.org</p>
               <p className="text-[10px] text-slate-500">Clave: 123</p>
             </button>
 
             <button
               type="button"
-              onClick={() => handleQuickLogin('developer@afedetco.org', '123')}
+              onClick={() => handleQuickLogin('developer@fedetco.org', '123')}
               className="p-2.5 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-left transition-colors group"
             >
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                <span className="text-xs font-bold text-blue-950">Desarrollador (Tú)</span>
+                <span className="text-xs font-bold text-blue-950 truncate">Desarrollador (Tú)</span>
               </div>
-              <p className="text-[10px] text-blue-700 mt-0.5 truncate">developer@afedetco.org</p>
+              <p className="text-[10px] text-blue-700 mt-0.5 truncate">developer@fedetco.org</p>
               <p className="text-[10px] text-slate-500">Clave: 123</p>
             </button>
           </div>

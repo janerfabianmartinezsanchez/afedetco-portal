@@ -23,15 +23,15 @@ export const Noticias = ({ noticias, onSelectNoticia, onNewNoticia, currentUser 
         {/* Cabecera */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-black uppercase tracking-wider mb-2">
-              <Newspaper className="w-3.5 h-3.5 text-blue-700" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-100 text-cyan-900 text-xs font-black uppercase tracking-wider mb-2 border border-cyan-300">
+              <Newspaper className="w-3.5 h-3.5 text-cyan-700" />
               <span>Actualidad Sindical & Pedagógica</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Noticias, Boletines y Comunicados
             </h2>
             <p className="text-base text-slate-600 mt-1 max-w-2xl">
-              Infórmate de primera mano sobre las asambleas, circulares de nómina, derechos adquiridos y novedades de AFEDETCO.
+              Infórmate de primera mano sobre las asambleas, circulares de nómina, derechos adquiridos y novedades de FEDETCO.
             </p>
           </div>
 

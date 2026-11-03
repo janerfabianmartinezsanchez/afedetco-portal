@@ -17,12 +17,12 @@ export const Galeria = ({ fotos, onSelectFoto, onNewFoto, currentUser }) => {
         {/* Cabecera */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-black uppercase tracking-wider mb-2">
-              <Image className="w-3.5 h-3.5 text-emerald-700" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 text-teal-900 text-xs font-black uppercase tracking-wider mb-2 border border-teal-300">
+              <Image className="w-3.5 h-3.5 text-teal-700" />
               <span>Memoria Fotográfica & Registro de Luchas</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Galería Multimedia AFEDETCO
+              Galería Multimedia FEDETCO
             </h2>
             <p className="text-base text-slate-600 mt-1 max-w-2xl">
               Imágenes de asambleas, movilizaciones pacíficas, talleres comunitarios y la labor pedagógica diaria en los territorios.

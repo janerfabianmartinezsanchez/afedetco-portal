@@ -31,7 +31,7 @@ export const ArticleModal = ({ noticia, onClose }) => {
             <span className="bg-blue-100 text-blue-900 text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">
               {noticia.categoria}
             </span>
-            <span className="text-xs text-slate-400">• Boletín Oficial AFEDETCO</span>
+            <span className="text-xs text-slate-400">• Boletín Oficial FEDETCO</span>
           </div>
 
           <div className="flex items-center space-x-2">
@@ -107,7 +107,7 @@ export const ArticleModal = ({ noticia, onClose }) => {
           {/* Sello de Autenticidad Sindical */}
           <div className="mt-8 pt-6 border-t border-slate-200 bg-slate-50 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
             <div>
-              <p className="font-extrabold text-slate-900">FEDERACIÓN DE ETNOEDUCADORES DE COLOMBIA (AFEDETCO)</p>
+              <p className="font-extrabold text-slate-900">FEDERACIÓN DE ETNOEDUCADORES DE COLOMBIA (FEDETCO)</p>
               <p className="text-slate-500">Comité Ejecutivo Nacional • Secretaría de Prensa y Comunicaciones</p>
             </div>
             <button

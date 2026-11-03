@@ -2,7 +2,7 @@
  * Configuración de Producción para Firebase (Vercel & Cloud)
  * 
  * Para activar Firebase real:
- * 1. Crea un proyecto en https://console.firebase.google.com con el nombre "afedetco-portal"
+ * 1. Crea un proyecto en https://console.firebase.google.com con el nombre "fedetco-portal"
  * 2. Habilita:
  *    - Authentication (Email/Password)
  *    - Cloud Firestore (Modo de producción o prueba)
@@ -12,9 +12,9 @@
 
 export const firebaseConfigTemplate = {
   apiKey: import.meta.env?.VITE_FIREBASE_API_KEY || "AIzaSy_TU_API_KEY_AQUI",
-  authDomain: import.meta.env?.VITE_FIREBASE_AUTH_DOMAIN || "afedetco-portal.firebaseapp.com",
-  projectId: import.meta.env?.VITE_FIREBASE_PROJECT_ID || "afedetco-portal",
-  storageBucket: import.meta.env?.VITE_FIREBASE_STORAGE_BUCKET || "afedetco-portal.appspot.com",
+  authDomain: import.meta.env?.VITE_FIREBASE_AUTH_DOMAIN || "fedetco-portal.firebaseapp.com",
+  projectId: import.meta.env?.VITE_FIREBASE_PROJECT_ID || "fedetco-portal",
+  storageBucket: import.meta.env?.VITE_FIREBASE_STORAGE_BUCKET || "fedetco-portal.appspot.com",
   messagingSenderId: import.meta.env?.VITE_FIREBASE_MESSAGING_SENDER_ID || "1234567890",
   appId: import.meta.env?.VITE_FIREBASE_APP_ID || "1:1234567890:web:abcdef123456"
 };

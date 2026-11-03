@@ -8,16 +8,16 @@ import {
 } from '../data/initialData';
 
 const KEYS = {
-  INSTITUTIONAL: 'afedetco_institutional_v2',
-  NOTICIAS: 'afedetco_noticias_v2',
-  GALERIA: 'afedetco_galeria_v2',
-  FOROS: 'afedetco_foros_v1',
-  DOCUMENTOS: 'afedetco_documentos_v1',
-  SESSION: 'afedetco_session_v1',
-  FIREBASE_CONFIG: 'afedetco_firebase_config_v1'
+  INSTITUTIONAL: 'fedetco_institutional_v3',
+  NOTICIAS: 'fedetco_noticias_v3',
+  GALERIA: 'fedetco_galeria_v3',
+  FOROS: 'fedetco_foros_v3',
+  DOCUMENTOS: 'fedetco_documentos_v3',
+  SESSION: 'fedetco_session_v3',
+  FIREBASE_CONFIG: 'fedetco_firebase_config_v3'
 };
 
-// Inicializa el almacenamiento si no existe
+// Inicializa el almacenamiento con datos de FEDETCO
 export const initStorage = () => {
   if (!localStorage.getItem(KEYS.INSTITUTIONAL)) {
     localStorage.setItem(KEYS.INSTITUTIONAL, JSON.stringify(INITIAL_INSTITUTIONAL));
@@ -69,9 +69,9 @@ export const saveNoticia = (noticia) => {
   } else {
     const newNoticia = {
       ...noticia,
-      id: 'noticia-' + Date.now(),
-      fecha: noticia.fecha || new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }),
-      leido: noticia.leido || '3 min de lectura'
+      id: `noticia-${Date.now()}`,
+      fecha: new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }),
+      leido: '3 min de lectura'
     };
     updated = [newNoticia, ...noticias];
   }
@@ -80,12 +80,13 @@ export const saveNoticia = (noticia) => {
 };
 
 export const deleteNoticia = (id) => {
-  const noticias = getNoticias().filter(n => n.id !== id);
-  localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(noticias));
-  return noticias;
+  const noticias = getNoticias();
+  const updated = noticias.filter(n => n.id !== id);
+  localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(updated));
+  return updated;
 };
 
-// Servicios de Galería
+// Servicios de Galería Multimedia
 export const getFotos = () => {
   try {
     const data = localStorage.getItem(KEYS.GALERIA);
@@ -103,8 +104,8 @@ export const saveFoto = (foto) => {
   } else {
     const newFoto = {
       ...foto,
-      id: 'foto-' + Date.now(),
-      fecha: foto.fecha || new Date().toLocaleDateString('es-CO', { month: 'long', year: 'numeric' })
+      id: `foto-${Date.now()}`,
+      fecha: new Date().toLocaleDateString('es-CO', { month: 'long', year: 'numeric' })
     };
     updated = [newFoto, ...fotos];
   }
@@ -113,12 +114,13 @@ export const saveFoto = (foto) => {
 };
 
 export const deleteFoto = (id) => {
-  const fotos = getFotos().filter(f => f.id !== id);
-  localStorage.setItem(KEYS.GALERIA, JSON.stringify(fotos));
-  return fotos;
+  const fotos = getFotos();
+  const updated = fotos.filter(f => f.id !== id);
+  localStorage.setItem(KEYS.GALERIA, JSON.stringify(updated));
+  return updated;
 };
 
-// Servicios de Foros
+// Servicios de Foros Magisteriales
 export const getForos = () => {
   try {
     const data = localStorage.getItem(KEYS.FOROS);
@@ -128,36 +130,38 @@ export const getForos = () => {
   }
 };
 
-export const saveForo = (foro) => {
+export const createTemaForo = (nuevoTema) => {
   const foros = getForos();
-  const newForo = {
-    ...foro,
-    id: 'foro-' + Date.now(),
+  const tema = {
+    ...nuevoTema,
+    id: `foro-${Date.now()}`,
     fecha: 'Hoy',
-    respuestas: 0,
-    vistas: 1,
-    comentarios: []
+    comentariosCount: 0,
+    respuestas: []
   };
-  const updated = [newForo, ...foros];
+  const updated = [tema, ...foros];
   localStorage.setItem(KEYS.FOROS, JSON.stringify(updated));
   return updated;
 };
+
+export const saveForo = createTemaForo;
 
 export const addComentarioForo = (foroId, comentario) => {
   const foros = getForos();
   const updated = foros.map(f => {
     if (f.id === foroId) {
-      const comentarios = f.comentarios || [];
+      const comentarios = f.respuestas || [];
       const newComentario = {
-        id: 'c-' + Date.now(),
-        autor: comentario.autor || 'Docente Afiliado',
+        id: `comentario-${Date.now()}`,
+        autor: comentario.autor || 'Docente Anónimo',
+        rol: comentario.rol || 'Docente Afiliado FEDETCO',
         fecha: 'Hace un momento',
         texto: comentario.texto
       };
       return {
         ...f,
-        respuestas: (f.respuestas || 0) + 1,
-        comentarios: [...comentarios, newComentario]
+        comentariosCount: (f.comentariosCount || 0) + 1,
+        respuestas: [...comentarios, newComentario]
       };
     }
     return f;
@@ -168,8 +172,9 @@ export const addComentarioForo = (foroId, comentario) => {
 
 // Servicios de Autenticación de Usuario (Admin & Developer)
 export const loginUser = (email, password) => {
+  const cleanEmail = email.toLowerCase().trim();
   const user = INITIAL_USERS.find(
-    u => u.email.toLowerCase().trim() === email.toLowerCase().trim() && u.password === password
+    u => (u.email.toLowerCase().trim() === cleanEmail || u.emailAlternativo?.toLowerCase().trim() === cleanEmail) && u.password === password
   );
   if (user) {
     const session = {
@@ -207,9 +212,9 @@ export const getFirebaseSettings = () => {
     return config ? JSON.parse(config) : {
       enabled: false,
       apiKey: "",
-      authDomain: "afedetco-portal.firebaseapp.com",
-      projectId: "afedetco-portal",
-      storageBucket: "afedetco-portal.appspot.com",
+      authDomain: "fedetco-portal.firebaseapp.com",
+      projectId: "fedetco-portal",
+      storageBucket: "fedetco-portal.appspot.com",
       messagingSenderId: "",
       appId: ""
     };

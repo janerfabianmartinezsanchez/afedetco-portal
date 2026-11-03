@@ -35,7 +35,7 @@ export const FotoFormModal = ({ isOpen, onClose, onSave }) => {
               Subir Foto a la Galería
             </h3>
             <p className="text-xs text-slate-500">
-              Añade memoria gráfica de las actividades de AFEDETCO
+              Añade memoria gráfica de las actividades de FEDETCO
             </p>
           </div>
           <button onClick={onClose} className="p-1 rounded-full text-slate-400 hover:text-slate-700">

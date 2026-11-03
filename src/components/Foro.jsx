@@ -57,21 +57,21 @@ export const Foro = ({ foros, onAddComentario, onCreateForo }) => {
         {/* Cabecera */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider mb-2">
-              <MessageSquare className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-100 text-cyan-950 text-xs font-black uppercase tracking-wider mb-2 border border-cyan-300">
+              <MessageSquare className="w-3.5 h-3.5 text-cyan-700" />
               <span>Diálogo & Democracia Sindical</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Foro Magisterial de Opinión y Propuestas
             </h2>
             <p className="text-base text-slate-600 mt-1 max-w-2xl">
-              Un espacio abierto y fraterno para la deliberación pedagógica, denuncias laborales y construcción colectiva de las bases de AFEDETCO.
+              Un espacio abierto y fraterno para la deliberación pedagógica, denuncias laborales y construcción colectiva de las bases de FEDETCO.
             </p>
           </div>
 
           <button
             onClick={() => setShowNuevoForoModal(true)}
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all self-start md:self-auto"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all self-start md:self-auto"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Crear Nuevo Tema de Debate</span>

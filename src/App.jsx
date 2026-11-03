@@ -194,7 +194,7 @@ export function App() {
           institutional={institutional}
         />
 
-        {/* 9. Redes Sociales (Instagram @afedetco exacto a la imagen del cliente, Facebook, YouTube) */}
+        {/* 9. Redes Sociales (X @fedetco, Instagram @fedetco, Facebook) */}
         <RedesSociales
           institutional={institutional}
         />

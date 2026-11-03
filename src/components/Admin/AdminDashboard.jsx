@@ -76,12 +76,14 @@ export const AdminDashboard = ({
       {/* Barra Superior del CMS */}
       <div className="bg-slate-950 border-b border-slate-800 px-4 sm:px-8 py-3.5 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-900 text-amber-400 flex items-center justify-center font-black">
-            ☀️
-          </div>
+          <img 
+            src="/images/fedetco-logo.png" 
+            alt="FEDETCO" 
+            className="w-10 h-10 rounded-full border border-amber-400 object-cover shadow"
+          />
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="font-black text-lg text-white">Panel CMS AFEDETCO</h2>
+              <h2 className="font-black text-lg text-white">Panel CMS FEDETCO</h2>
               <span className="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30">
                 {currentUser?.rol}
               </span>
@@ -392,7 +394,7 @@ export const AdminDashboard = ({
 
               <form onSubmit={handleSaveInstitutional} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 mb-1">Misión de AFEDETCO</label>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Misión de FEDETCO</label>
                   <textarea
                     rows={4}
                     value={instForm.mision}
@@ -509,7 +511,7 @@ export const AdminDashboard = ({
                     <label className="block text-[11px] font-semibold text-slate-400 mb-1">Project ID</label>
                     <input
                       type="text"
-                      placeholder="afedetco-portal"
+                      placeholder="fedetco-portal"
                       value={fbConfig.projectId || ''}
                       onChange={(e) => setFbConfig({ ...fbConfig, projectId: e.target.value })}
                       className="w-full px-3 py-1.5 text-xs rounded-xl bg-slate-900 border border-slate-700 text-slate-200"

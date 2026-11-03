@@ -6,13 +6,13 @@ export const WhatsAppWidget = ({ institutional }) => {
   const [customMsg, setCustomMsg] = useState('');
 
   const quickMessages = [
-    "Hola, deseo afiliarme a AFEDETCO y necesito orientación.",
+    "Hola, deseo afiliarme a FEDETCO y necesito orientación.",
     "Reporte urgente sobre servicio de salud FOMAG en mi región.",
     "Consulta jurídica sobre concurso y estabilidad docente."
   ];
 
   const handleSend = (text) => {
-    const message = text || customMsg || "Hola Prof. Jeiler, me comunico desde la página oficial de AFEDETCO para solicitar información.";
+    const message = text || customMsg || "Hola Prof. Jeiler, me comunico desde la página oficial de FEDETCO para solicitar información.";
     const encoded = encodeURIComponent(message);
     const phone = institutional?.whatsapp?.replace(/\D/g, '') || "573169040090";
     const url = `https://wa.me/${phone}?text=${encoded}`;
@@ -29,13 +29,15 @@ export const WhatsAppWidget = ({ institutional }) => {
           <div className="bg-emerald-600 p-4 text-white flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-slate-900 border-2 border-white flex items-center justify-center font-bold text-amber-400 text-sm">
-                  ☀️
-                </div>
+                <img 
+                  src="/images/fedetco-logo.png" 
+                  alt="FEDETCO" 
+                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                />
                 <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-emerald-600 animate-pulse"></span>
               </div>
               <div>
-                <h4 className="font-extrabold text-sm leading-tight">AFEDETCO Oficial</h4>
+                <h4 className="font-extrabold text-sm leading-tight">FEDETCO Oficial</h4>
                 <p className="text-[11px] text-emerald-100 flex items-center gap-1">
                   <span>En línea • Asesoría Magisterial</span>
                 </p>
@@ -58,7 +60,7 @@ export const WhatsAppWidget = ({ institutional }) => {
                 <span>Canal Oficial de Atención</span>
               </p>
               <p>
-                ¡Saludos colega docente! Bienvenido a la línea directa de AFEDETCO. ¿En qué podemos apoyarte hoy?
+                ¡Saludos colega docente! Bienvenido a la línea directa de FEDETCO. ¿En qué podemos apoyarte hoy?
               </p>
               <span className="text-[10px] text-slate-400 block text-right">Ahora</span>
             </div>
