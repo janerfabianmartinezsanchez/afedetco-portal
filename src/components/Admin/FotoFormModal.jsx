@@ -135,49 +135,56 @@ export const FotoFormModal = ({ isOpen, onClose, onSave }) => {
 
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">
-              Foto para la Galería (Desde tu celular o predefinida)
+              Foto para la Galería
             </label>
-            
-            {/* Botón para subir directamente foto del celular */}
-            <div className="mb-2">
-              <label className="cursor-pointer inline-flex items-center gap-2 bg-cyan-900 hover:bg-cyan-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow w-full justify-center">
-                <span>📁 Elegir foto de la galería de mi celular</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </label>
-            </div>
 
-            {/* Vista previa de la foto seleccionada */}
-            {formData.url && (
-              <div className="relative mb-2 rounded-xl overflow-hidden border border-slate-300 h-28 bg-slate-100">
+            {/* Si ya hay foto seleccionada, mostrarla y ocultar los otros botones para evitar confusiones */}
+            {formData.url ? (
+              <div className="relative mb-3 rounded-2xl overflow-hidden border-2 border-emerald-500 shadow-md h-36 bg-slate-900 group">
                 <img src={formData.url} alt="Vista previa" className="w-full h-full object-cover object-top" />
-                <span className="absolute bottom-1 right-2 bg-slate-900/80 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">
-                  Foto lista ✓
-                </span>
+                <div className="absolute top-2 left-2 bg-emerald-600 text-white text-[10px] font-black px-2 py-0.5 rounded shadow flex items-center gap-1">
+                  ✓ Foto lista para subir
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, url: '' }))}
+                  className="absolute top-2 right-2 bg-red-600/90 hover:bg-red-700 text-white text-[10px] font-bold px-2 py-1 rounded-lg shadow"
+                >
+                  ✕ Quitar / Cambiar foto
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-2 mb-3">
+                {/* Botón para subir directamente foto del celular */}
+                <label className="cursor-pointer inline-flex items-center gap-2 bg-cyan-900 hover:bg-cyan-800 text-white text-xs font-bold px-4 py-3 rounded-xl shadow w-full justify-center transition-transform transform active:scale-95">
+                  <span>📷 Elegir foto de la galería de mi celular</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
+                </label>
+
+                <div>
+                  <span className="block text-[11px] text-slate-500 mb-1 text-center font-medium">
+                    — o si no tienes foto, elige una del archivo de FEDETCO: —
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                    {samplePhotos.map((s, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setFormData({ ...formData, url: s.url })}
+                        className="text-[11px] py-1.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-bold border border-slate-200 text-center"
+                      >
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
-
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[10px] font-bold text-slate-500">O toca una foto ya disponible:</span>
-              {samplePhotos.map((s, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setFormData({ ...formData, url: s.url })}
-                  className={`text-[10px] px-2.5 py-1 rounded-lg font-bold border transition-all ${
-                    formData.url === s.url 
-                      ? 'bg-cyan-700 text-white border-cyan-800' 
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
-                  }`}
-                >
-                  {s.label}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="pt-3 border-t border-slate-100 flex justify-end gap-2">
