@@ -135,11 +135,42 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
               <label className="block text-xs font-bold text-slate-700 mb-1">Autor / Responsable</label>
               <input
                 type="text"
-                placeholder="Ej. Secretaría de Prensa FEDETCO"
+                placeholder="Ej. Prof. Jeiler Bejarano Córdoba"
                 value={formData.autor}
                 onChange={(e) => setFormData({ ...formData, autor: e.target.value })}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none mb-1.5"
               />
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] text-slate-400 font-bold">Rápido (1 toque):</span>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, autor: "Prof. Jeiler Bejarano (Fiscal FEDETCO)" })}
+                  className="text-[10px] bg-amber-50 hover:bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md font-bold border border-amber-200"
+                >
+                  Jeiler Bejarano (Fiscal)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, autor: "Luz Minia Carabalí (Presidenta)" })}
+                  className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-medium border border-slate-200"
+                >
+                  Luz Minia (Presidenta)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, autor: "Secretaría de Prensa FEDETCO" })}
+                  className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-medium border border-slate-200"
+                >
+                  Prensa FEDETCO
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, autor: "Janer Martínez (Desarrollador)" })}
+                  className="text-[10px] bg-cyan-50 hover:bg-cyan-100 text-cyan-900 px-2 py-0.5 rounded-md font-bold border border-cyan-200"
+                >
+                  Janer Martínez
+                </button>
+              </div>
             </div>
           </div>
 
