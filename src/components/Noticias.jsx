@@ -36,16 +36,6 @@ export const Noticias = ({ noticias, onSelectNoticia, onNewNoticia, currentUser 
               Infórmate de primera mano sobre las asambleas, circulares de nómina, derechos adquiridos y novedades de FEDETCO.
             </p>
           </div>
-
-          {currentUser && (
-            <button
-              onClick={onNewNoticia}
-              className="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all self-start md:self-auto"
-            >
-              <PlusCircle className="w-4 h-4 text-amber-400" />
-              <span>Redactar Nueva Noticia</span>
-            </button>
-          )}
         </div>
 
         {/* Barra de Filtros y Búsqueda */}

@@ -28,16 +28,6 @@ export const Galeria = ({ fotos, onSelectFoto, onNewFoto, currentUser }) => {
               Imágenes de asambleas, movilizaciones pacíficas, talleres comunitarios y la labor pedagógica diaria en los territorios.
             </p>
           </div>
-
-          {currentUser && (
-            <button
-              onClick={onNewFoto}
-              className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition-all self-start md:self-auto"
-            >
-              <PlusCircle className="w-4 h-4 text-emerald-200" />
-              <span>Subir Foto a la Galería</span>
-            </button>
-          )}
         </div>
 
         {/* Filtros de Categoría */}
