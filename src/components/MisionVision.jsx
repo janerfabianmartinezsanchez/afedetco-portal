@@ -196,7 +196,7 @@ export const MisionVision = ({ institutional }) => {
         <div className="bg-slate-100 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
-              <span className="text-xs font-bold text-cyan-800 tracking-wider uppercase">Cámara de Comercio & MinTrabajo</span>
+              <span className="text-xs font-bold text-cyan-800 tracking-wider uppercase">Registro Institucional & Representación Magisterial</span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 Comité Ejecutivo Nacional de {institutional.nombre || "FEDETCO"}
               </h3>

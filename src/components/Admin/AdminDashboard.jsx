@@ -97,15 +97,15 @@ export const AdminDashboard = ({
         <div className="flex items-center space-x-2 sm:space-x-3">
           <button
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all shadow"
           >
-            <ArrowLeft className="w-3.5 h-3.5 text-amber-400" />
-            <span className="hidden sm:inline">Ver Sitio Público</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Ver Sitio Público</span>
           </button>
 
           <button
             onClick={onLogout}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-950/80 hover:bg-red-900 text-red-200 text-xs font-bold border border-red-800/50 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-950/80 hover:bg-red-900 text-red-200 text-xs font-bold border border-red-800/50 transition-colors"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Cerrar Sesión</span>

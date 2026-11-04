@@ -40,7 +40,12 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    const finalData = {
+      ...formData,
+      resumen: formData.resumen?.trim() || (formData.contenido?.slice(0, 140) + '...'),
+      imagen: formData.imagen?.trim() || sampleImages[0].url
+    };
+    onSave(finalData);
     onClose();
   };
 
@@ -104,11 +109,10 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Resumen Corto (Bajada) *</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">Resumen Corto (Bajada - Opcional)</label>
             <textarea
-              required
               rows={2}
-              placeholder="Una síntesis de 2 líneas para la portada..."
+              placeholder="Una síntesis de 2 líneas para la portada (o déjalo en blanco)..."
               value={formData.resumen}
               onChange={(e) => setFormData({ ...formData, resumen: e.target.value })}
               className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none resize-none"
@@ -129,11 +133,10 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
 
           {/* URL de Imagen con muestras rápidas */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">URL de la Imagen de Portada</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">Imagen de Portada (URL o selecciona una foto abajo)</label>
             <input
-              type="url"
-              required
-              placeholder="https://..."
+              type="text"
+              placeholder="https://... o toca una foto de archivo abajo"
               value={formData.imagen}
               onChange={(e) => setFormData({ ...formData, imagen: e.target.value })}
               className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none mb-2"

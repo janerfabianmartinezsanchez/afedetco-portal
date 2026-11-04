@@ -80,13 +80,70 @@ export const updateInstitutionalData = (updatedData) => {
   return updatedData;
 };
 
-// Servicios de Noticias
+// Servicios de Noticias con recuperación automática de versiones anteriores
 export const getNoticias = () => {
   try {
     const data = localStorage.getItem(KEYS.NOTICIAS);
-    if (!data) return INITIAL_NOTICIAS;
-    const parsed = JSON.parse(data);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_NOTICIAS;
+    let current = [];
+    if (data) {
+      try {
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          current = parsed;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // Rescatar noticias creadas por el usuario en versiones anteriores (v6, v5, etc.)
+    const previousKeys = [
+      'fedetco_noticias_v6',
+      'fedetco_noticias_v5',
+      'fedetco_noticias_v4',
+      'fedetco_noticias_v3',
+      'fedetco_noticias_v2',
+      'fedetco_noticias_v1',
+      'fedetco_noticias'
+    ];
+
+    let recovered = [];
+    for (const pKey of previousKeys) {
+      try {
+        const pData = localStorage.getItem(pKey);
+        if (pData) {
+          const pList = JSON.parse(pData);
+          if (Array.isArray(pList)) {
+            const initialIds = INITIAL_NOTICIAS.map(n => n.id);
+            const userPosts = pList.filter(n => n && n.id && !initialIds.includes(n.id));
+            if (userPosts.length > 0) {
+              recovered = [...recovered, ...userPosts];
+            }
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    if (current.length === 0) {
+      current = INITIAL_NOTICIAS;
+    }
+
+    if (recovered.length > 0) {
+      const currentIds = new Set(current.map(n => n.id));
+      const newItems = recovered.filter(n => !currentIds.has(n.id));
+      if (newItems.length > 0) {
+        current = [...newItems, ...current];
+        try {
+          localStorage.setItem(KEYS.NOTICIAS, JSON.stringify(current));
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    return current;
   } catch {
     return INITIAL_NOTICIAS;
   }
