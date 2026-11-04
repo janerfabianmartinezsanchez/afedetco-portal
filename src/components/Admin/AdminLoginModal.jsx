@@ -142,13 +142,13 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
             <button
               type="button"
               onClick={() => handleQuickLogin('developer@fedetco.org', '123')}
-              className="p-2.5 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-left transition-colors group"
+              className="p-2.5 rounded-xl border border-cyan-200 bg-cyan-50 hover:bg-cyan-100 text-left transition-colors group"
             >
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                <span className="text-xs font-bold text-blue-950 truncate">Desarrollador (Tú)</span>
+                <span className="w-2 h-2 rounded-full bg-cyan-600"></span>
+                <span className="text-xs font-bold text-cyan-950 truncate">Janer Martínez (Desarrollador)</span>
               </div>
-              <p className="text-[10px] text-blue-700 mt-0.5 truncate">developer@fedetco.org</p>
+              <p className="text-[10px] text-cyan-700 mt-0.5 truncate">developer@fedetco.org</p>
               <p className="text-[10px] text-slate-500">Clave: 123</p>
             </button>
           </div>

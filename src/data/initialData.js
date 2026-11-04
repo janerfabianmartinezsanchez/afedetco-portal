@@ -392,11 +392,11 @@ export const INITIAL_USERS = [
   },
   {
     id: "user-dev",
-    nombre: "Webmaster / Desarrollador",
+    nombre: "Janer Martínez (Desarrollador Web)",
     email: "developer@fedetco.org",
     emailAlternativo: "developer@afedetco.org",
     password: "123",
-    rol: "Super Administrador (Full Stack)",
+    rol: "Desarrollador Web & Super Admin",
     avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
     permisos: ["todas", "firebase", "configuracion", "respaldo"]
   }
