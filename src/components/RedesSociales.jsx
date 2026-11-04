@@ -32,7 +32,7 @@ export const RedesSociales = ({ institutional }) => {
       texto: "🚨 #ATENCIÓN Radicamos formalmente ante el Ministerio de Educación el Pliego Especial de los Etnoeducadores. Exigimos estabilidad laboral en propiedad, garantías salariales y respeto al concurso étnico. ¡La educación propia se respeta! #FEDETCO #DignidadMagisterial",
       reposts: 142,
       likes: 389,
-      imagen: "/images/afedetco-marcha-bogota.jpg"
+      imagen: "/images/fedetco-marcha-bogota.jpg"
     },
     {
       id: "x-2",
@@ -40,7 +40,7 @@ export const RedesSociales = ({ institutional }) => {
       texto: "📋 En sesión permanente el Comité Ejecutivo Nacional de FEDETCO haciendo seguimiento riguroso a las quejas por demoras en atención médica del FOMAG. Instamos al Gobierno a dar solución inmediata en las regiones rurales.",
       reposts: 88,
       likes: 215,
-      imagen: "/images/afedetco-comite-ejecutivo.jpg"
+      imagen: "/images/fedetco-comite-ejecutivo.jpg"
     },
     {
       id: "x-3",

@@ -12,32 +12,32 @@ export const MisionVision = ({ institutional }) => {
       nombre: "Luz Minia Carabalí Montaño", 
       cargo: "Presidente", 
       tipo: "Presidencia Nacional",
-      foto: "/images/afedetco-lideres-evento.jpg"
+      foto: "/images/fedetco-lideres-evento.jpg"
     },
     { 
       nombre: "José Absalón Moreno Vélez", 
       cargo: "Vicepresidente", 
       tipo: "Vicepresidencia Nacional",
-      foto: "/images/afedetco-asamblea-auditorio.jpg"
+      foto: "/images/fedetco-asamblea-auditorio.jpg"
     },
     { 
       nombre: "Carlos Arturo Cassiani Cásseres", 
       cargo: "Secretario General", 
       tipo: "Secretaría General",
-      foto: "/images/afedetco-marcha-bogota.jpg"
+      foto: "/images/fedetco-marcha-bogota.jpg"
     },
     { 
       nombre: "Jeiler Bejarano Córdoba", 
       cargo: "Fiscal", 
       tipo: "Fiscalía Nacional & Veeduría",
-      foto: "/images/afedetco-comite-ejecutivo.jpg",
+      foto: "/images/fedetco-comite-ejecutivo.jpg",
       destacado: true
     },
     { 
       nombre: "Ricardino Quiñones Carabalí", 
       cargo: "Tesorero", 
       tipo: "Tesorería & Finanzas",
-      foto: "/images/afedetco-comite-ejecutivo.jpg"
+      foto: "/images/fedetco-comite-ejecutivo.jpg"
     }
   ];
 
@@ -220,7 +220,7 @@ export const MisionVision = ({ institutional }) => {
               >
                 <div className="relative flex-shrink-0">
                   <img
-                    src={lider.foto || "/images/afedetco-comite-ejecutivo.jpg"}
+                    src={lider.foto || "/images/fedetco-comite-ejecutivo.jpg"}
                     alt={lider.nombre}
                     className="w-14 h-14 rounded-full object-cover object-top border-2 border-cyan-500 shadow-md group-hover:scale-105 transition-transform"
                   />

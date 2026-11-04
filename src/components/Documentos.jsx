@@ -5,6 +5,20 @@ export const Documentos = ({ documentos, institutional }) => {
   const [downloadSuccess, setDownloadSuccess] = useState('');
 
   const handleDownload = (doc) => {
+    // Si tiene archivo oficial directo (ej. Formulario de Afiliación en Word .docx)
+    if (doc.archivoUrl || doc.id === 'doc-2' || (doc.titulo && doc.titulo.toLowerCase().includes('afiliaci'))) {
+      const a = document.createElement('a');
+      a.href = doc.archivoUrl || '/documents/formulario-afiliacion-fedetco.docx';
+      a.download = 'Formulario_Oficial_Afiliacion_FEDETCO.docx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      setDownloadSuccess(`¡Descarga iniciada: Formulario Oficial de Afiliación FEDETCO (.docx)!`);
+      setTimeout(() => setDownloadSuccess(''), 4500);
+      return;
+    }
+
     // Generar un archivo descargable de texto o simulado
     const blob = new Blob([
       `============================================================\n` +

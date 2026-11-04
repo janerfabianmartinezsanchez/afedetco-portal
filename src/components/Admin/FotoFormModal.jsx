@@ -11,10 +11,10 @@ export const FotoFormModal = ({ isOpen, onClose, onSave }) => {
   });
 
   const samplePhotos = [
-    { label: "Marcha Bogotá", url: "/images/afedetco-marcha-bogota.jpg" },
-    { label: "Comité Ejecutivo", url: "/images/afedetco-comite-ejecutivo.jpg" },
-    { label: "Líderes Intercultural", url: "/images/afedetco-lideres-evento.jpg" },
-    { label: "Auditorio Plenaria", url: "/images/afedetco-asamblea-auditorio.jpg" }
+    { label: "Marcha Bogotá", url: "/images/fedetco-marcha-bogota.jpg" },
+    { label: "Comité Ejecutivo", url: "/images/fedetco-comite-ejecutivo.jpg" },
+    { label: "Líderes Intercultural", url: "/images/fedetco-lideres-evento.jpg" },
+    { label: "Auditorio Plenaria", url: "/images/fedetco-asamblea-auditorio.jpg" }
   ];
 
   const handleFileUpload = (e) => {

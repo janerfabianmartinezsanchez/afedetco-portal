@@ -13,10 +13,10 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
   });
 
   const sampleImages = [
-    { label: "Asamblea", url: "/images/afedetco-asamblea-auditorio.jpg" },
-    { label: "Marcha", url: "/images/afedetco-marcha-bogota.jpg" },
-    { label: "Líderes", url: "/images/afedetco-lideres-evento.jpg" },
-    { label: "Comité", url: "/images/afedetco-comite-ejecutivo.jpg" }
+    { label: "Asamblea", url: "/images/fedetco-asamblea-auditorio.jpg" },
+    { label: "Marcha", url: "/images/fedetco-marcha-bogota.jpg" },
+    { label: "Líderes", url: "/images/fedetco-lideres-evento.jpg" },
+    { label: "Comité", url: "/images/fedetco-comite-ejecutivo.jpg" }
   ];
 
   const handleFileUpload = (e) => {

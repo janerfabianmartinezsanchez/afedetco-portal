@@ -1,13 +1,13 @@
-/**
- * Configuración de Producción para Firebase (Vercel & Cloud)
+﻿/**
+ * ConfiguraciÃ³n de ProducciÃ³n para Firebase (Vercel & Cloud)
  * 
  * Para activar Firebase real:
  * 1. Crea un proyecto en https://console.firebase.google.com con el nombre "fedetco-portal"
  * 2. Habilita:
  *    - Authentication (Email/Password)
- *    - Cloud Firestore (Modo de producción o prueba)
- *    - Cloud Storage (Para subir imágenes de noticias y galería)
- * 3. Copia tus credenciales en el archivo .env.local o directamente en el Panel de Administración de este sitio.
+ *    - Cloud Firestore (Modo de producciÃ³n o prueba)
+ *    - Cloud Storage (Para subir imÃ¡genes de noticias y galerÃ­a)
+ * 3. Copia tus credenciales en el archivo .env.local o directamente en el Panel de AdministraciÃ³n de este sitio.
  */
 
 export const firebaseConfigTemplate = {
@@ -22,10 +22,10 @@ export const firebaseConfigTemplate = {
 export const VERCEL_DEPLOY_GUIDE = `
 # Instrucciones de Despliegue en Vercel
 
-1. Sube este repositorio a tu cuenta de GitHub (ej. github.com/tu-usuario/afedetco-portal).
-2. Entra a [https://vercel.com](https://vercel.com) e inicia sesión.
+1. Sube este repositorio a tu cuenta de GitHub (ej. github.com/tu-usuario/fedetco-portal).
+2. Entra a [https://vercel.com](https://vercel.com) e inicia sesiÃ³n.
 3. Haz clic en **"Add New Project"** y selecciona tu repositorio.
-4. En **Framework Preset**, Vercel detectará automáticamente **Vite**.
+4. En **Framework Preset**, Vercel detectarÃ¡ automÃ¡ticamente **Vite**.
 5. (Opcional) Si ya tienes tu proyecto de Firebase, agrega las variables de entorno en Vercel:
    - VITE_FIREBASE_API_KEY
    - VITE_FIREBASE_AUTH_DOMAIN
@@ -33,5 +33,5 @@ export const VERCEL_DEPLOY_GUIDE = `
    - VITE_FIREBASE_STORAGE_BUCKET
    - VITE_FIREBASE_MESSAGING_SENDER_ID
    - VITE_FIREBASE_APP_ID
-6. Haz clic en **Deploy**. ¡En 40 segundos tendrás tu enlace oficial https://afedetco.vercel.app listo y con certificado SSL gratuito!
+6. Haz clic en **Deploy**. Â¡En 40 segundos tendrÃ¡s tu enlace oficial https://fedetco.vercel.app listo y con certificado SSL gratuito!
 `;
