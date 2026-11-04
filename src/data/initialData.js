@@ -17,7 +17,7 @@ export const INITIAL_INSTITUTIONAL = {
   emailPrensa: "prensa@fedetco.org",
   redes: {
     x: "https://x.com/fedetco?s=11",
-    instagram: "https://instagram.com/fedetco",
+    instagram: "https://www.instagram.com/fedetco/",
     facebook: "https://facebook.com/fedetco"
   },
   mision: "Representar y defender los derechos de los educandos y educadores de los pueblos étnicos a los que representa FEDETCO luchando por una educación propia, el establecimiento de un currículo diferenciado y el justo reconocimiento del etnoeducador en su reivindicación social, política y económica como trabajadoras y trabajadores del Estado para una formación de estudiantes competentes en un mundo globalizado.",
@@ -331,50 +331,56 @@ export const INITIAL_DOCUMENTOS = [
 export const INITIAL_INSTAGRAM_POSTS = [
   {
     id: "ig-1",
-    likes: 284,
-    comments: 39,
-    caption: "¡EN LAS CALLES POR LA DIGNIDAD DOCENTE! Delegación de FEDETCO marchando por la educación pública y los derechos étnicos. #EducacionConMemoria #FEDETCO #Colombia",
+    likes: 42,
+    comments: 8,
+    titulo: "Comunicado Oficial",
+    caption: "📄 Comunicado Oficial FEDETCO: Radicación formal del pliego de exigencias del magisterio etnoeducador ante el Gobierno Nacional.",
     imagen: "/images/afedetco-marcha-bogota.jpg",
-    tipo: "carrusel"
+    tipo: "foto"
   },
   {
     id: "ig-2",
-    likes: 315,
-    comments: 48,
-    caption: "Comité Ejecutivo Nacional de FEDETCO. Liderazgo, unidad y compromiso inquebrantable por la estabilidad laboral de los etnoeducadores en Colombia.",
-    imagen: "/images/afedetco-comite-ejecutivo.jpg",
-    tipo: "foto"
+    likes: 58,
+    comments: 12,
+    titulo: "Mitos y Verdades sobre la Etnoeducación",
+    caption: "💡 Mitos y verdades sobre la etnoeducación en Colombia: Reconocemos la educación propia con currículo diferenciado como un derecho fundamental innegociable.",
+    imagen: "/images/afedetco-lideres-evento.jpg",
+    tipo: "carrusel"
   },
   {
     id: "ig-3",
-    likes: 247,
-    comments: 32,
-    caption: "Encuentro Nacional Intercultural de Etnoeducadores. Nuestra memoria, raíces y saberes comunitarios son la base de la transformación educativa.",
-    imagen: "/images/afedetco-lideres-evento.jpg",
-    tipo: "foto"
-  },
-  {
-    id: "ig-4",
-    likes: 219,
-    comments: 26,
-    caption: "Sesión plenaria y audiencia técnica en el auditorio central. Construyendo la propuesta del Estatuto Docente Etnoeducador.",
+    likes: 39,
+    comments: 6,
+    titulo: "Encuentro y Diálogo con las Bases",
+    caption: "👥 Mesas de trabajo territoriales con docentes y autoridades comunitarias para la construcción del Estatuto Docente Etnoeducador.",
     imagen: "/images/afedetco-asamblea-auditorio.jpg",
     tipo: "video"
   },
   {
+    id: "ig-4",
+    likes: 67,
+    comments: 14,
+    titulo: "¿Qué puede enseñarnos un territorio?",
+    caption: "🌿 ¿Qué puede enseñarnos un territorio? La memoria ancestral, los ríos y los saberes comunitarios son la mayor escuela de nuestras comunidades.",
+    imagen: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
+    tipo: "foto"
+  },
+  {
     id: "ig-5",
-    likes: 185,
-    comments: 23,
-    caption: "Encuentro formativo de etnodesarrollo y currículos propios. Transformando la educación desde la raíz comunitaria.",
+    likes: 73,
+    comments: 19,
+    titulo: "3 Razones por las que la Etnoeducación Cambia Todo",
+    caption: "✨ 3 razones por las que la etnoeducación transforma la escuela: Dignidad, identidad afrocolombiana y raizal, y justicia laboral para los docentes.",
     imagen: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80",
     tipo: "carrusel"
   },
   {
     id: "ig-6",
-    likes: 298,
-    comments: 41,
-    caption: "Asamblea Nacional de Delegados Sindicales. La voz del maestro rural se escucha con firmeza en cada rincón del país.",
-    imagen: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80",
+    likes: 85,
+    comments: 21,
+    titulo: "Federación de Etnoeducadores de Colombia",
+    caption: "🇨🇴 Federación de Etnoeducadores de Colombia - FEDETCO. Educación · Cultura · Identidad · Territorio. Unidos por los derechos del magisterio.",
+    imagen: "/images/afedetco-comite-ejecutivo.jpg",
     tipo: "foto"
   }
 ];

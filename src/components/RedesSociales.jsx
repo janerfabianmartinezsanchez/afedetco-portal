@@ -200,40 +200,76 @@ export const RedesSociales = ({ institutional }) => {
           </div>
         )}
 
-        {/* Pestaña: Instagram (@fedetco) */}
+        {/* Pestaña: Instagram Oficial (@fedetco) */}
         {activeTab === 'instagram' && (
           <div className="space-y-6 animate-fadeIn">
-            {/* Perfil Instagram Card */}
-            <div className="bg-slate-950 rounded-3xl p-6 border border-slate-800 max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-              <div className="flex items-center space-x-4">
-                <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-yellow-400 via-rose-500 to-purple-600 flex-shrink-0">
-                  <img
-                    src="/images/fedetco-logo.png"
-                    alt="Logo FEDETCO"
-                    className="w-16 h-16 rounded-full border-2 border-slate-950 object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-extrabold text-base sm:text-lg">@fedetco</h3>
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 fill-current" />
+            {/* Perfil Instagram Card Oficial */}
+            <div className="bg-slate-950 rounded-3xl p-6 sm:p-8 border border-slate-800 max-w-3xl mx-auto shadow-xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+                <div className="flex items-start sm:items-center space-x-4">
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-tr from-yellow-400 via-rose-500 to-purple-600 flex-shrink-0">
+                    <img
+                      src="/images/fedetco-logo.png"
+                      alt="Logo FEDETCO"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-950 object-cover"
+                    />
                   </div>
-                  <p className="text-xs text-slate-400">Federación de Etnoeducadores de Colombia</p>
-                  <p className="text-xs text-slate-300 font-normal mt-1">
-                    Educación • Cultura • Identidad • Territorio 🇨🇴
-                  </p>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-extrabold text-lg sm:text-xl text-white">@fedetco</h3>
+                      <CheckCircle2 className="w-5 h-5 text-sky-400 fill-current" />
+                    </div>
+                    <p className="text-xs text-slate-400 font-bold mt-0.5">Federación de Etnoeducadores de Colombia</p>
+                    <p className="text-xs text-slate-300 font-semibold mt-1">
+                      Educación · Cultura · Identidad · Territorio
+                    </p>
+                    <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                      Unidos por los derechos de los etnoeducadores. Por una educación con identidad y memoria.
+                    </p>
+                    <a
+                      href="https://www.instagram.com/fedetco/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-cyan-400 hover:text-cyan-300 font-bold inline-flex items-center gap-1 mt-1"
+                    >
+                      <span>🔗 fedetco.com.co</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center gap-3 w-full sm:w-auto">
+                  <div className="flex items-center justify-around w-full sm:w-auto gap-4 text-center px-4 py-2 bg-slate-900 rounded-2xl border border-slate-800">
+                    <div>
+                      <span className="block font-black text-white text-base">16</span>
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider">publicaciones</span>
+                    </div>
+                    <div>
+                      <span className="block font-black text-white text-base">117</span>
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider">seguidores</span>
+                    </div>
+                    <div>
+                      <span className="block font-black text-white text-base">0</span>
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider">seguidos</span>
+                    </div>
+                  </div>
+
+                  <a
+                    href="https://www.instagram.com/fedetco/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full text-center bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:opacity-95 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow flex items-center justify-center gap-2 transition-opacity"
+                  >
+                    <span>Abrir Perfil @fedetco</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
 
-              <a
-                href={institutional.redes?.instagram || "https://instagram.com/fedetco"}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-gradient-to-r from-pink-600 to-amber-500 hover:opacity-95 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow flex items-center gap-2"
-              >
-                <span>Seguir en Instagram</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              {/* Mención verificada de Luz Minia Carabalí */}
+              <div className="pt-4 flex items-center gap-2 text-xs text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Seguido por <strong>Luz Minia Carabalí</strong> (Presidente FEDETCO) y la comunidad sindical.</span>
+              </div>
             </div>
 
             {/* Grid de Fotos de Instagram */}

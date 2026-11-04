@@ -8,13 +8,13 @@ import {
 } from '../data/initialData';
 
 const KEYS = {
-  INSTITUTIONAL: 'fedetco_institutional_v5',
-  NOTICIAS: 'fedetco_noticias_v5',
-  GALERIA: 'fedetco_galeria_v5',
-  FOROS: 'fedetco_foros_v5',
-  DOCUMENTOS: 'fedetco_documentos_v5',
-  SESSION: 'fedetco_session_v5',
-  FIREBASE_CONFIG: 'fedetco_firebase_config_v5'
+  INSTITUTIONAL: 'fedetco_institutional_v6',
+  NOTICIAS: 'fedetco_noticias_v6',
+  GALERIA: 'fedetco_galeria_v6',
+  FOROS: 'fedetco_foros_v6',
+  DOCUMENTOS: 'fedetco_documentos_v6',
+  SESSION: 'fedetco_session_v6',
+  FIREBASE_CONFIG: 'fedetco_firebase_config_v6'
 };
 
 // Inicializa el almacenamiento con datos de FEDETCO
