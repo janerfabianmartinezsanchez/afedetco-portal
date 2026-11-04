@@ -6,7 +6,7 @@ export const INITIAL_INSTITUTIONAL = {
   nombre: "FEDETCO",
   subtitulo: "Federación de Etnoeducadores de Colombia",
   lema: "Educación • Cultura • Identidad • Territorio",
-  descripcionCorta: "La Federación de Etnoeducadores de Colombia - FEDETCO, es una organización que agrupa a etnoeducadores en el país, con el objetivo de promover y defender sus derechos. Como federación, trabaja en la articulación, protección y fortalecimiento de la labor de los etnoeducadores, garantizando el reconocimiento de sus derechos laborales, académicos y culturales, promoviendo una educación intercultural, inclusiva y respetuosa de la diversidad étnica.",
+  descripcionCorta: "La Federación de Etnoeducadores de Colombia - FEDETCO, es la organización sindical que agrupa y defiende los derechos laborales, salariales y pedagógicos de las y los etnoeducadores de las comunidades negras, afrocolombianas, raizales y palenqueras en todo el país, promoviendo una educación propia, inclusiva y con pertinencia cultural y territorial.",
   nit: "901.482.391-7",
   personeria: "Resolución MinTrabajo No. 0418 de 2018",
   afiliacionNacional: "Organización Sindical de Primer Grado de Etnoeducadores de Colombia",

@@ -14,17 +14,17 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
       titulo: "Por la Dignidad y Estabilidad de los Etnoeducadores en Colombia",
       subtitulo: "Radicamos el pliego de peticiones ante el Ministerio de Educación exigiendo concurso especial, nombramiento en propiedad y homologación salarial.",
       imagen: "/images/afedetco-marcha-bogota.jpg",
-      pieFoto: "Delegación FEDETCO marchando en Bogotá por la educación étnica pública",
+      pieFoto: "Delegación FEDETCO marchando en Bogotá por la dignidad y derechos del magisterio etnoeducador",
       cta: "Conocer el Pliego de Peticiones",
       action: () => onNavigate('noticias')
     },
     {
-      badge: "EDUCACIÓN CON MEMORIA RAIZAL",
+      badge: "MEMORIA RAIZAL, NEGRA Y PALENQUERA",
       badgeColor: "bg-teal-600 text-white border border-teal-400/40",
       titulo: "Cultura, Identidad y Territorio: Saberes que Transforman la Escuela",
-      subtitulo: "Reconocemos y defendemos el valor de la pedagogía afro, raizal e indígena en los archipiélagos, costas, ríos y resguardos de toda la nación.",
+      subtitulo: "Reconocemos y defendemos el valor de la etnoeducación de las comunidades negras, afrocolombianas, raizales y palenqueras en los archipiélagos, costas, ríos, palenques y territorios ancestrales de toda la nación.",
       imagen: "/images/afedetco-lideres-evento.jpg",
-      pieFoto: "Liderazgo magisterial de los pueblos étnicos y raizales de Colombia",
+      pieFoto: "Liderazgo magisterial de las comunidades negras, raizales y palenqueras de Colombia",
       cta: "Explorar Nuestra Misión y Visión",
       action: () => onNavigate('mision-vision')
     },

@@ -52,13 +52,13 @@ export const MisionVision = ({ institutional }) => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-100 text-cyan-900 text-xs font-black uppercase tracking-wider border border-cyan-300">
             <Sparkles className="w-3.5 h-3.5 text-cyan-700" />
-            <span>Estatutos & Identidad Raizal y Étnica</span>
+            <span>Estatutos & Identidad Raizal, Afrocolombiana y Palenquera</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Quiénes Somos: Por una Educación Propia, Digna y con Currículo Diferenciado
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
-            {institutional.nombre || "FEDETCO"} es la organización sindical y pedagógica que agrupa, articula y defiende los derechos de educandos y educadores de los pueblos étnicos y raizales en toda Colombia.
+            {institutional.nombre || "FEDETCO"} es la organización sindical y pedagógica que agrupa, articula y defiende los derechos de educandos y educadores de las comunidades negras, afrocolombianas, raizales y palenqueras en toda Colombia.
           </p>
         </div>
 
@@ -182,12 +182,12 @@ export const MisionVision = ({ institutional }) => {
               ))}
             </div>
 
-            {/* Parágrafo de Base Fundamental Raizal & Étnico */}
+            {/* Parágrafo de Base Fundamental Raizal, Afrocolombiana y Palenquera */}
             <div className="mt-8 p-5 rounded-2xl bg-cyan-50/80 border border-cyan-200 text-xs sm:text-sm text-slate-800 leading-relaxed">
               <strong className="text-cyan-950 font-extrabold block mb-1">
                 Base Fundamental de Acción Social (FEDETCO):
               </strong>
-              "FEDETCO adopta como base fundamental de su acción social el principio de la defensa de los intereses de los trabajadores étnicos y raizales públicos y privados, dentro del más amplio respeto de las concepciones políticas, religiosas, culturales, raizales, sindicales, filosóficas, de credo, sexo y raza. Buscamos contribuir a la construcción de un modelo de sociedad verdaderamente participativa, basada en la solidaridad, la autonomía, la paz y el respeto irrestricto de los derechos humanos y los convenios de la OIT."
+              "FEDETCO adopta como base fundamental de su acción social el principio de la defensa de los intereses de los trabajadores de las comunidades negras, afrocolombianas, raizales y palenqueras, públicos y privados, dentro del más amplio respeto de las concepciones políticas, religiosas, culturales, raizales, sindicales, filosóficas, de credo, sexo y raza. Buscamos contribuir a la construcción de un modelo de sociedad verdaderamente participativa, basada en la solidaridad, la autonomía, la paz y el respeto irrestricto de los derechos humanos y los convenios de la OIT."
             </div>
           </div>
         )}

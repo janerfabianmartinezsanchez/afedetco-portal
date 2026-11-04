@@ -45,7 +45,7 @@ export const RedesSociales = ({ institutional }) => {
     {
       id: "x-3",
       fecha: "28 Oct",
-      texto: "✊🏽 Desde los ríos, palenques y resguardos, las y los etnoeducadores de Colombia seguimos en pie de lucha. La cultura y la memoria ancestral son el pilar pedagógico de nuestra nación. Síguenos en @fedetco",
+      texto: "✊🏾 Desde los archipiélagos, costas, palenques y consejos comunitarios, las y los etnoeducadores de las comunidades negras, afrocolombianas, raizales y palenqueras seguimos en pie de lucha. La cultura y la memoria ancestral son el pilar pedagógico de nuestra nación. Síguenos en @fedetco",
       reposts: 64,
       likes: 178
     }
