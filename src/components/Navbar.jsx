@@ -76,7 +76,7 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
                 <XIcon className="w-3.5 h-3.5" />
               </a>
               <a 
-                href={institutional.redes?.instagram || "https://instagram.com/fedetco"} 
+                href={institutional.redes?.instagram || "https://www.instagram.com/fedetco/"} 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-slate-300 hover:text-pink-400 transition-colors"
@@ -84,15 +84,12 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
-              <a 
-                href={institutional.redes?.facebook || "https://facebook.com/fedetco"} 
-                target="_blank" 
-                rel="noreferrer"
-                className="text-slate-300 hover:text-sky-400 transition-colors"
-                title="Facebook FEDETCO"
+              <span 
+                className="text-slate-400 hover:text-blue-400 transition-colors cursor-pointer"
+                title="Facebook FEDETCO (Próximamente disponible)"
               >
                 <FacebookIcon className="w-3.5 h-3.5" />
-              </a>
+              </span>
             </div>
 
             {/* Acceso WhatsApp Directo */}

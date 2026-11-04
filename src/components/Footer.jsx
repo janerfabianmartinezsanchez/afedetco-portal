@@ -152,26 +152,23 @@ export const Footer = ({ institutional, onNavigate, onOpenLogin, currentUser, on
               </a>
 
               <a
-                href={institutional.redes?.instagram || "https://instagram.com/fedetco"}
+                href={institutional.redes?.instagram || "https://www.instagram.com/fedetco/"}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-600 to-amber-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow hover:opacity-90 transition-opacity"
-                title="Instagram"
+                title="Instagram @fedetco"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
                 <span>Instagram</span>
               </a>
 
-              <a
-                href={institutional.redes?.facebook || "https://facebook.com/fedetco"}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow transition-colors"
-                title="Facebook"
+              <div
+                className="inline-flex items-center gap-1.5 bg-slate-900 text-slate-400 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-800 shadow cursor-default"
+                title="Página oficial de Facebook (Próximamente disponible)"
               >
-                <FacebookIcon className="w-3.5 h-3.5" />
+                <FacebookIcon className="w-3.5 h-3.5 text-blue-500" />
                 <span>Facebook</span>
-              </a>
+              </div>
             </div>
 
             <div className="pt-4 border-t border-slate-800">

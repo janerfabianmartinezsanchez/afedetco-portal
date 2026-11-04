@@ -98,12 +98,12 @@ export const RedesSociales = ({ institutional }) => {
               onClick={() => setActiveTab('facebook')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'facebook'
-                  ? 'bg-blue-600 text-white shadow-lg'
+                  ? 'bg-blue-600 text-white shadow-lg ring-2 ring-white/30'
                   : 'bg-slate-800 text-slate-400 hover:text-white'
               }`}
             >
-              <FacebookIcon className="w-4 h-4" />
-              <span>Facebook Oficial</span>
+              <FacebookIcon className="w-4 h-4 text-blue-400" />
+              <span>Facebook (Próximamente)</span>
             </button>
           </div>
         </div>
@@ -301,29 +301,21 @@ export const RedesSociales = ({ institutional }) => {
           </div>
         )}
 
-        {/* Pestaña: Facebook Oficial */}
+        {/* Pestaña: Facebook (Próximamente) */}
         {activeTab === 'facebook' && (
           <div className="max-w-2xl mx-auto bg-slate-950 rounded-3xl p-8 border border-slate-800 text-center space-y-4 animate-fadeIn shadow-xl">
-            <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto shadow-lg">
+            <div className="w-16 h-16 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center mx-auto shadow-lg">
               <FacebookIcon className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-black text-white">
-              Página Oficial de FEDETCO en Facebook
-            </h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
-              Únete a nuestra página de Facebook para seguir nuestras transmisiones en vivo, foros pedagógicos y comunicados oficiales en video.
-            </p>
-            <div className="pt-2">
-              <a
-                href={institutional.redes?.facebook || "https://facebook.com/fedetco"}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition-all"
-              >
-                <span>Visitar Página de Facebook</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-900/40 text-blue-300 text-xs font-bold border border-blue-700/50">
+              <span>Canal en Preparación</span>
             </div>
+            <h3 className="text-2xl font-black text-white">
+              Página Oficial de Facebook
+            </h3>
+            <p className="text-sm text-slate-300 leading-relaxed max-w-lg mx-auto">
+              Nuestra página oficial de Facebook se encuentra en proceso de apertura. Muy pronto estará disponible para transmitir nuestras asambleas, ruedas de prensa en vivo y comunicados audiovisuales.
+            </p>
           </div>
         )}
 
