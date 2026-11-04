@@ -5,16 +5,21 @@ export const Documentos = ({ documentos, institutional }) => {
   const [downloadSuccess, setDownloadSuccess] = useState('');
 
   const handleDownload = (doc) => {
-    // Si tiene archivo oficial directo (ej. Formulario de Afiliación en Word .docx)
-    if (doc.archivoUrl || doc.id === 'doc-2' || (doc.titulo && doc.titulo.toLowerCase().includes('afiliaci'))) {
+    // Si tiene archivo oficial directo en el servidor (Estatutos o Formulario de Afiliación)
+    if (doc.archivoUrl || doc.id === 'doc-1' || doc.id === 'doc-2') {
       const a = document.createElement('a');
-      a.href = doc.archivoUrl || '/documents/formulario-afiliacion-fedetco.docx';
-      a.download = 'Formulario_Oficial_Afiliacion_FEDETCO.docx';
+      if (doc.id === 'doc-1' || (doc.titulo && doc.titulo.toLowerCase().includes('estatuto'))) {
+        a.href = doc.archivoUrl || '/documents/estatutos-oficiales-fedetco.docx';
+        a.download = 'Estatutos_Oficiales_FEDETCO.docx';
+      } else {
+        a.href = doc.archivoUrl || '/documents/formulario-afiliacion-fedetco.docx';
+        a.download = 'Formulario_Oficial_Afiliacion_FEDETCO.docx';
+      }
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
 
-      setDownloadSuccess(`¡Descarga iniciada: Formulario Oficial de Afiliación FEDETCO (.docx)!`);
+      setDownloadSuccess(`¡Descarga iniciada: ${doc.titulo}!`);
       setTimeout(() => setDownloadSuccess(''), 4500);
       return;
     }
