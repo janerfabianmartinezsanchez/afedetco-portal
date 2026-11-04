@@ -7,12 +7,14 @@ export const Noticias = ({ noticias, onSelectNoticia, onNewNoticia, currentUser 
 
   const categories = ['Todas', 'Sindical', 'Estatutos y Leyes', 'Género y Cultura', 'Salud Docente', 'Pedagogía'];
 
-  const filteredNoticias = noticias.filter((noticia) => {
+  const filteredNoticias = (noticias || []).filter((noticia) => {
+    if (!noticia) return false;
     const matchCat = selectedCategory === 'Todas' || noticia.categoria === selectedCategory;
-    const matchSearch = 
-      noticia.titulo.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      noticia.resumen.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      noticia.contenido.toLowerCase().includes(searchQuery.toLowerCase());
+    const title = (noticia.titulo || '').toLowerCase();
+    const resume = (noticia.resumen || '').toLowerCase();
+    const content = (noticia.contenido || '').toLowerCase();
+    const query = (searchQuery || '').toLowerCase();
+    const matchSearch = title.includes(query) || resume.includes(query) || content.includes(query);
     return matchCat && matchSearch;
   });
 

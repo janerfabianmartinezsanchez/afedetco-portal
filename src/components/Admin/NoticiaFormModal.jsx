@@ -73,8 +73,10 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const todayStr = new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
     const finalData = {
       ...formData,
+      fecha: todayStr,
       resumen: formData.resumen?.trim() || (formData.contenido?.slice(0, 140) + '...'),
       imagen: formData.imagen?.trim() || sampleImages[0].url
     };

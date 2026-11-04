@@ -96,11 +96,18 @@ export const AdminDashboard = ({
 
         <div className="flex items-center space-x-2 sm:space-x-3">
           <button
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              setTimeout(() => {
+                const targetId = activeTab === 'galeria' ? 'galeria' : (activeTab === 'foros' ? 'foro' : 'noticias');
+                const el = document.getElementById(targetId);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
             className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all shadow"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Ver Sitio Público</span>
+            <span>Ver en el Sitio</span>
           </button>
 
           <button
