@@ -288,9 +288,11 @@ export const addComentarioForo = (foroId, comentario) => {
 
 // Servicios de Autenticación de Usuario (Admin & Developer)
 export const loginUser = (email, password) => {
-  const cleanEmail = email.toLowerCase().trim();
+  const cleanEmail = (email || '').toLowerCase().trim();
+  const cleanPass = (password || '').trim();
   const user = INITIAL_USERS.find(
-    u => (u.email.toLowerCase().trim() === cleanEmail || u.emailAlternativo?.toLowerCase().trim() === cleanEmail) && u.password === password
+    u => (u.email.toLowerCase().trim() === cleanEmail || u.emailAlternativo?.toLowerCase().trim() === cleanEmail) && 
+         (u.password === cleanPass || u.passwords?.includes(cleanPass))
   );
   if (user) {
     const session = {

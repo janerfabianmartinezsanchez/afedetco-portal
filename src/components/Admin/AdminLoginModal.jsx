@@ -119,41 +119,6 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
           </button>
         </form>
 
-        {/* Acceso Rápido para Demostración al Cliente */}
-        <div className="mt-6 pt-5 border-t border-slate-200">
-          <span className="block text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-2.5 text-center">
-            ⚡ Acceso Rápido para Pruebas (1 Clic)
-          </span>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('admin@fedetco.org', '123')}
-              className="p-2.5 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 text-left transition-colors group"
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                <span className="text-xs font-bold text-amber-950 truncate">Jeiler Bejarano (Fiscal)</span>
-              </div>
-              <p className="text-[10px] text-amber-700 mt-0.5 truncate">admin@fedetco.org</p>
-              <p className="text-[10px] text-slate-500">Clave: 123</p>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('developer@fedetco.org', '123')}
-              className="p-2.5 rounded-xl border border-cyan-200 bg-cyan-50 hover:bg-cyan-100 text-left transition-colors group"
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-600"></span>
-                <span className="text-xs font-bold text-cyan-950 truncate">Janer Martínez (Desarrollador)</span>
-              </div>
-              <p className="text-[10px] text-cyan-700 mt-0.5 truncate">developer@fedetco.org</p>
-              <p className="text-[10px] text-slate-500">Clave: 123</p>
-            </button>
-          </div>
-        </div>
-
       </div>
     </div>
   );

@@ -388,11 +388,12 @@ export const INITIAL_INSTAGRAM_POSTS = [
 export const INITIAL_USERS = [
   {
     id: "user-cliente",
-    nombre: "Jeiler Bejarano Córdoba (Fiscal FEDETCO)",
+    nombre: "Comité Ejecutivo FEDETCO",
     email: "admin@fedetco.org",
-    emailAlternativo: "admin@afedetco.org",
-    password: "123",
-    rol: "Fiscal Nacional (Comité Ejecutivo)",
+    emailAlternativo: "directiva@fedetco.org",
+    password: "fedetco2026",
+    passwords: ["fedetco2026", "Fedetco2026*", "123"],
+    rol: "Directiva Nacional FEDETCO",
     avatar: "/images/afedetco-comite-ejecutivo.jpg",
     permisos: ["noticias", "galeria", "comunicados", "foros"]
   },
@@ -400,10 +401,11 @@ export const INITIAL_USERS = [
     id: "user-dev",
     nombre: "Janer Martínez (Desarrollador Web)",
     email: "developer@fedetco.org",
-    emailAlternativo: "developer@afedetco.org",
-    password: "123",
+    emailAlternativo: "janer@fedetco.org",
+    password: "janer2026",
+    passwords: ["janer2026", "Janer2026*", "123"],
     rol: "Desarrollador Web & Super Admin",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
+    avatar: "/images/afedetco-lideres-evento.jpg",
     permisos: ["todas", "firebase", "configuracion", "respaldo"]
   }
 ];
