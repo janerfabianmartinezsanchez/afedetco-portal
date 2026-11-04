@@ -13,12 +13,45 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
   });
 
   const sampleImages = [
-    { label: "Asamblea", url: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80" },
-    { label: "Docentes Aula", url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80" },
-    { label: "Lideresas", url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80" },
-    { label: "Salud Docente", url: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80" },
-    { label: "Pedagogía", url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" }
+    { label: "Asamblea", url: "/images/afedetco-asamblea-auditorio.jpg" },
+    { label: "Marcha", url: "/images/afedetco-marcha-bogota.jpg" },
+    { label: "Líderes", url: "/images/afedetco-lideres-evento.jpg" },
+    { label: "Comité", url: "/images/afedetco-comite-ejecutivo.jpg" }
   ];
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxDim = 900;
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          }
+        } else {
+          if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const compressed = canvas.toDataURL('image/jpeg', 0.75);
+        setFormData(prev => ({ ...prev, imagen: compressed }));
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => {
     if (editingNoticia) {
@@ -131,25 +164,47 @@ export const NoticiaFormModal = ({ isOpen, onClose, onSave, editingNoticia }) =>
             />
           </div>
 
-          {/* URL de Imagen con muestras rápidas */}
+          {/* Imagen de la Noticia */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Imagen de Portada (URL o selecciona una foto abajo)</label>
-            <input
-              type="text"
-              placeholder="https://... o toca una foto de archivo abajo"
-              value={formData.imagen}
-              onChange={(e) => setFormData({ ...formData, imagen: e.target.value })}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none mb-2"
-            />
+            <label className="block text-xs font-bold text-slate-700 mb-1">
+              Imagen de Portada (Desde tu celular o archivo)
+            </label>
             
+            {/* Botón para subir directamente foto del celular */}
+            <div className="mb-2">
+              <label className="cursor-pointer inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow w-full justify-center">
+                <span>📁 Elegir foto de la galería de mi celular</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+              </label>
+            </div>
+
+            {/* Vista previa de la foto seleccionada */}
+            {formData.imagen && (
+              <div className="relative mb-2 rounded-xl overflow-hidden border border-slate-300 h-28 bg-slate-100">
+                <img src={formData.imagen} alt="Vista previa" className="w-full h-full object-cover object-top" />
+                <span className="absolute bottom-1 right-2 bg-slate-900/80 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">
+                  Foto seleccionada ✓
+                </span>
+              </div>
+            )}
+
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[10px] font-bold text-slate-400">O usa una foto de archivo:</span>
+              <span className="text-[10px] font-bold text-slate-500">O toca una foto ya guardada:</span>
               {sampleImages.map((s, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setFormData({ ...formData, imagen: s.url })}
-                  className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-medium"
+                  className={`text-[10px] px-2.5 py-1 rounded-lg font-bold border transition-all ${
+                    formData.imagen === s.url 
+                      ? 'bg-blue-900 text-white border-blue-950' 
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
+                  }`}
                 >
                   {s.label}
                 </button>

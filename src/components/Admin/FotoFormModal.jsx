@@ -17,6 +17,40 @@ export const FotoFormModal = ({ isOpen, onClose, onSave }) => {
     { label: "Auditorio Plenaria", url: "/images/afedetco-asamblea-auditorio.jpg" }
   ];
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxDim = 900;
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          }
+        } else {
+          if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const compressed = canvas.toDataURL('image/jpeg', 0.75);
+        setFormData(prev => ({ ...prev, url: compressed }));
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
@@ -100,23 +134,45 @@ export const FotoFormModal = ({ isOpen, onClose, onSave }) => {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Imagen (URL o toca una foto predefinida)</label>
-            <input
-              type="text"
-              placeholder="https://... o toca un botón abajo"
-              value={formData.url}
-              onChange={(e) => setFormData({ ...formData, url: e.target.value })}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none mb-2"
-            />
+            <label className="block text-xs font-bold text-slate-700 mb-1">
+              Foto para la Galería (Desde tu celular o predefinida)
+            </label>
             
+            {/* Botón para subir directamente foto del celular */}
+            <div className="mb-2">
+              <label className="cursor-pointer inline-flex items-center gap-2 bg-cyan-900 hover:bg-cyan-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow w-full justify-center">
+                <span>📁 Elegir foto de la galería de mi celular</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+              </label>
+            </div>
+
+            {/* Vista previa de la foto seleccionada */}
+            {formData.url && (
+              <div className="relative mb-2 rounded-xl overflow-hidden border border-slate-300 h-28 bg-slate-100">
+                <img src={formData.url} alt="Vista previa" className="w-full h-full object-cover object-top" />
+                <span className="absolute bottom-1 right-2 bg-slate-900/80 text-white text-[9px] px-1.5 py-0.5 rounded font-bold">
+                  Foto lista ✓
+                </span>
+              </div>
+            )}
+
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[10px] font-bold text-slate-400">Predefinidas:</span>
+              <span className="text-[10px] font-bold text-slate-500">O toca una foto ya disponible:</span>
               {samplePhotos.map((s, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setFormData({ ...formData, url: s.url })}
-                  className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-medium"
+                  className={`text-[10px] px-2.5 py-1 rounded-lg font-bold border transition-all ${
+                    formData.url === s.url 
+                      ? 'bg-cyan-700 text-white border-cyan-800' 
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
+                  }`}
                 >
                   {s.label}
                 </button>
