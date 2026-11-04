@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// Créditos oficiales de Desarrollo Web
+// Créditos oficiales de Desarrollador Web
 console.log(
-  "%c FEDETCO %c Desarrollado por Janer Martínez | WhatsApp: +57 312 629 2030 ",
+  "%c FEDETCO %c Desarrollador Web: Janer Martínez | Tel: 312 629 2030 ",
   "background: #06b6d4; color: #031726; font-weight: 800; padding: 4px 8px; border-radius: 4px 0 0 4px;",
   "background: #031726; color: #38bdf8; font-weight: 600; padding: 4px 8px; border: 1px solid #06b6d4; border-radius: 0 4px 4px 0;"
 );
