@@ -3,6 +3,9 @@ import {
   initStorage, 
   getInstitutionalData, 
   updateInstitutionalData,
+  getBannerSlides,
+  saveBannerSlide,
+  deleteBannerSlide,
   getNoticias, 
   saveNoticia, 
   deleteNoticia,
@@ -47,6 +50,18 @@ export function App() {
 
   // Estados de Datos
   const [institutional, setInstitutional] = useState(getInstitutionalData());
+  const [bannerSlides, setBannerSlides] = useState(getBannerSlides());
+
+  const handleSaveBannerSlide = (slide) => {
+    const updated = saveBannerSlide(slide);
+    setBannerSlides(updated);
+  };
+
+  const handleDeleteBannerSlide = (id) => {
+    const updated = deleteBannerSlide(id);
+    setBannerSlides(updated);
+  };
+
   const [noticias, setNoticias] = useState(getNoticias());
   const [fotos, setFotos] = useState(getFotos());
   const [foros, setForos] = useState(getForos());
@@ -152,6 +167,7 @@ export function App() {
         {/* 3. Hero interactivo con carrusel y accesos directos */}
         <Hero
           institutional={institutional}
+          slides={bannerSlides}
           onNavigate={handleNavigate}
           onSelectNoticia={(art) => setSelectedArticle(art)}
           noticias={noticias}
@@ -256,6 +272,9 @@ export function App() {
         foros={foros}
         institutional={institutional}
         onUpdateInstitutional={handleUpdateInstitutional}
+        bannerSlides={bannerSlides}
+        onSaveBannerSlide={handleSaveBannerSlide}
+        onDeleteBannerSlide={handleDeleteBannerSlide}
         onPreviewNoticia={(art) => setSelectedArticle(art)}
       />
 

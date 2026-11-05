@@ -4,7 +4,8 @@ import {
   INITIAL_GALERIA,
   INITIAL_FOROS,
   INITIAL_DOCUMENTOS,
-  INITIAL_USERS
+  INITIAL_USERS,
+  INITIAL_SLIDES
 } from '../data/initialData';
 
 const KEYS = {
@@ -14,7 +15,8 @@ const KEYS = {
   FOROS: 'fedetco_foros_v7',
   DOCUMENTOS: 'fedetco_documentos_v7',
   SESSION: 'fedetco_session_v7',
-  FIREBASE_CONFIG: 'fedetco_firebase_config_v7'
+  FIREBASE_CONFIG: 'fedetco_firebase_config_v7',
+  BANNER: 'fedetco_banner_v8'
 };
 
 // Inicializa el almacenamiento con datos de FEDETCO
@@ -34,6 +36,9 @@ export const initStorage = () => {
     }
     if (!localStorage.getItem(KEYS.DOCUMENTOS)) {
       localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
+    }
+    if (!localStorage.getItem(KEYS.BANNER)) {
+      localStorage.setItem(KEYS.BANNER, JSON.stringify(INITIAL_SLIDES));
     }
   } catch (e) {
     console.error("Storage init error:", e);
@@ -368,5 +373,46 @@ export const resetToDefaults = () => {
     localStorage.setItem(KEYS.DOCUMENTOS, JSON.stringify(INITIAL_DOCUMENTOS));
   } catch (e) {
     console.error(e);
+  }
+};
+
+// Servicios de Banner Principal (Portada / Carrusel Hero)
+export const getBannerSlides = () => {
+  try {
+    const data = localStorage.getItem(KEYS.BANNER);
+    if (!data) return INITIAL_SLIDES;
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_SLIDES;
+  } catch {
+    return INITIAL_SLIDES;
+  }
+};
+
+export const saveBannerSlide = (slide) => {
+  try {
+    const current = getBannerSlides();
+    let updated;
+    if (slide.id && current.some(s => s.id === slide.id)) {
+      updated = current.map(s => s.id === slide.id ? { ...s, ...slide } : s);
+    } else {
+      updated = [{ ...slide, id: `slide-${Date.now()}` }, ...current];
+    }
+    localStorage.setItem(KEYS.BANNER, JSON.stringify(updated));
+    return updated;
+  } catch (e) {
+    console.error(e);
+    return getBannerSlides();
+  }
+};
+
+export const deleteBannerSlide = (id) => {
+  try {
+    const current = getBannerSlides();
+    const updated = current.filter(s => s.id !== id);
+    localStorage.setItem(KEYS.BANNER, JSON.stringify(updated));
+    return updated;
+  } catch (e) {
+    console.error(e);
+    return getBannerSlides();
   }
 };

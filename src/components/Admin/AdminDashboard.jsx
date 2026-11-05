@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { VERCEL_DEPLOY_GUIDE } from '../../services/firebaseConfig';
 import { resetToDefaults, saveFirebaseSettings, getFirebaseSettings } from '../../services/storage';
+import { BannerSlideModal } from './BannerSlideModal';
 
 export const AdminDashboard = ({ 
   isOpen, 
@@ -24,10 +25,15 @@ export const AdminDashboard = ({
   foros,
   institutional,
   onUpdateInstitutional,
-  onPreviewNoticia
+  onPreviewNoticia,
+  bannerSlides,
+  onSaveBannerSlide,
+  onDeleteBannerSlide
 }) => {
   const [activeTab, setActiveTab] = useState('noticias');
   const [toastMessage, setToastMessage] = useState('');
+  const [isBannerModalOpen, setIsBannerModalOpen] = useState(false);
+  const [bannerSlideToEdit, setBannerSlideToEdit] = useState(null);
   
   // Estado local para Misión & Visión
   const [instForm, setInstForm] = useState({
@@ -171,6 +177,24 @@ export const AdminDashboard = ({
             </span>
           </button>
 
+
+          <button
+            onClick={() => setActiveTab('banner')}
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+              activeTab === 'banner'
+                ? 'bg-blue-900 text-white shadow'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+            }`}
+          >
+            <span className="flex items-center gap-2.5">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
+              <span>Banner de Portada</span>
+            </span>
+            <span className="text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded-full font-bold">
+              {bannerSlides ? bannerSlides.length : 0}
+            </span>
+          </button>
+
           <button
             onClick={() => setActiveTab('foros')}
             className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
@@ -233,6 +257,102 @@ export const AdminDashboard = ({
         {/* Zona de Trabajo Dinámica */}
         <main className="flex-1 p-4 sm:p-8 overflow-y-auto bg-slate-900">
           
+
+          {/* TAB BANNER: PORTADA Y CARRUSEL */}
+          {activeTab === 'banner' && (
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div>
+                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                    <span>Fotos del Banner Principal (Inicio)</span>
+                    <span className="text-xs bg-cyan-900/60 text-cyan-300 border border-cyan-500/40 px-2.5 py-0.5 rounded-full font-bold">
+                      Portada
+                    </span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Aquí puedes eliminar fotos que ya no quieras y subir fotos nuevas directamente desde tu celular o computador.
+                  </p>
+                </div>
+                <button
+                  onClick={() => { setBannerSlideToEdit(null); setIsBannerModalOpen(true); }}
+                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-900/30 transition-all self-start"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Subir Nueva Foto al Banner</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {bannerSlides && bannerSlides.map((slide, idx) => (
+                  <div
+                    key={slide.id || idx}
+                    className="bg-slate-950 p-4 rounded-2xl border border-slate-800 hover:border-cyan-500/50 flex flex-col justify-between gap-4 transition-all group"
+                  >
+                    <div className="space-y-3">
+                      <div className="relative h-44 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                        <img
+                          src={slide.imagen}
+                          alt={slide.titulo}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <span className="absolute top-2 left-2 bg-slate-950/90 text-cyan-300 text-[10px] font-black px-2.5 py-0.5 rounded border border-cyan-500/40 uppercase tracking-wide">
+                          {slide.badge || `Foto ${idx + 1}`}
+                        </span>
+                        <span className="absolute top-2 right-2 bg-slate-950/90 text-amber-300 text-[10px] font-black px-2 py-0.5 rounded border border-amber-500/40">
+                          Posición #{idx + 1}
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-extrabold text-white leading-snug line-clamp-2">
+                          {slide.titulo}
+                        </h4>
+                        <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                          {slide.subtitulo}
+                        </p>
+                        {slide.pieFoto && (
+                          <p className="text-[11px] text-slate-500 italic mt-1.5">
+                            Pie de foto: {slide.pieFoto}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-900">
+                      <span className="text-[11px] text-slate-500 font-semibold">
+                        Botón: {slide.cta || 'Conocer Más'}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => { setBannerSlideToEdit(slide); setIsBannerModalOpen(true); }}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-950 text-blue-300 hover:bg-blue-900 text-xs font-bold transition-colors border border-blue-800/50"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                          <span>Editar</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (bannerSlides.length <= 1) {
+                              alert('Debe quedar al menos una foto en el banner principal.');
+                              return;
+                            }
+                            if (window.confirm('¿Deseas eliminar esta foto del Banner Principal?')) {
+                              onDeleteBannerSlide(slide.id);
+                              showToast('Foto eliminada del banner correctamente');
+                            }
+                          }}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-950/80 text-red-300 hover:bg-red-900 text-xs font-bold transition-colors border border-red-800/50"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Eliminar</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* TAB 1: NOTICIAS */}
           {activeTab === 'noticias' && (
             <div className="space-y-6">
@@ -552,6 +672,17 @@ export const AdminDashboard = ({
 
         </main>
       </div>
+
+
+      <BannerSlideModal
+        isOpen={isBannerModalOpen}
+        onClose={() => setIsBannerModalOpen(false)}
+        onSave={(data) => {
+          onSaveBannerSlide(data);
+          showToast(bannerSlideToEdit ? '¡Foto del banner actualizada!' : '¡Nueva foto publicada en el banner!');
+        }}
+        slideToEdit={bannerSlideToEdit}
+      />
 
     </div>
   );

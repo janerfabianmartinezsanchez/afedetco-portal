@@ -4,11 +4,12 @@ import {
   Users, HeartPulse, Scale, Sparkles, BookOpen, MapPin, CheckCircle2, Shield 
 } from 'lucide-react';
 
-export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) => {
+export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias, slides: propSlides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [
+  const defaultSlides = [
     {
+      id: "slide-1",
       badge: "PLIEGO NACIONAL 2026",
       badgeColor: "bg-cyan-600 text-white border border-cyan-400/40",
       titulo: "Por la Dignidad y Estabilidad de los Etnoeducadores en Colombia",
@@ -16,9 +17,10 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
       imagen: "/images/fedetco-marcha-bogota.jpg",
       pieFoto: "Delegación FEDETCO marchando en Bogotá por la dignidad y derechos del magisterio etnoeducador",
       cta: "Conocer el Pliego de Peticiones",
-      action: () => onNavigate('noticias')
+      actionKey: "noticias"
     },
     {
+      id: "slide-2",
       badge: "MEMORIA RAIZAL, NEGRA Y PALENQUERA",
       badgeColor: "bg-teal-600 text-white border border-teal-400/40",
       titulo: "Cultura, Identidad y Territorio: Saberes que Transforman la Escuela",
@@ -26,9 +28,10 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
       imagen: "/images/fedetco-lideres-evento.jpg",
       pieFoto: "Liderazgo magisterial de las comunidades negras, raizales y palenqueras de Colombia",
       cta: "Explorar Nuestra Misión y Visión",
-      action: () => onNavigate('mision-vision')
+      actionKey: "mision-vision"
     },
     {
+      id: "slide-3",
       badge: "UNIDAD SINDICAL",
       badgeColor: "bg-sky-600 text-white border border-sky-400/40",
       titulo: "¡Súmate a FEDETCO! Tu Voz y Tus Derechos Tienen Respaldo Legal",
@@ -36,9 +39,11 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
       imagen: "/images/fedetco-comite-ejecutivo.jpg",
       pieFoto: "Comité Ejecutivo Nacional de FEDETCO en sesión permanente",
       cta: "Afiliarme Ahora Mismo",
-      action: () => onNavigate('documentos')
+      actionKey: "documentos"
     }
   ];
+
+  const slides = (propSlides && propSlides.length > 0) ? propSlides : defaultSlides;
 
   // Auto avance del carrusel cada 8 segundos
   useEffect(() => {
@@ -51,7 +56,7 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
-  const activeSlide = slides[currentSlide];
+  const activeSlide = slides[currentSlide % slides.length] || slides[0];
 
   return (
     <section id="hero" className="relative bg-slate-950 text-white overflow-hidden">
@@ -111,7 +116,7 @@ export const Hero = ({ institutional, onNavigate, onSelectNoticia, noticias }) =
             {/* Botones de Acción (Estilo Raizal Turquesa & Océano) */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <button
-                onClick={activeSlide.action}
+                onClick={() => { if (typeof activeSlide.action === 'function') activeSlide.action(); else onNavigate(activeSlide.actionKey || 'noticias'); }}
                 className="bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 hover:from-cyan-300 hover:to-teal-300 text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-xl shadow-cyan-500/20 transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-2 group text-sm"
               >
                 <span>{activeSlide.cta}</span>
