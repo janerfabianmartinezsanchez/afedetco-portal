@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   X, Newspaper, Image, MessageSquare, Settings, Flame, 
   Trash2, Edit, Plus, LogOut, CheckCircle, RefreshCw, 
-  ExternalLink, ArrowLeft, Shield, Globe, Database, Save, Eye
+  ExternalLink, ArrowLeft, Shield, Globe, Database, Save, Eye, Sparkles
 } from 'lucide-react';
 import { VERCEL_DEPLOY_GUIDE } from '../../services/firebaseConfig';
 import { resetToDefaults, saveFirebaseSettings, getFirebaseSettings } from '../../services/storage';
