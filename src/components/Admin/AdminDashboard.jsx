@@ -83,7 +83,7 @@ export const AdminDashboard = ({
           />
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="font-black text-lg text-white">Panel CMS FEDETCO</h2>
+              <h2 className="font-black text-lg text-white">Panel de Administración FEDETCO</h2>
               <span className="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30">
                 {currentUser?.rol}
               </span>

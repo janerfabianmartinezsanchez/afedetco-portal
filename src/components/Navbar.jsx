@@ -174,7 +174,7 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
                 className="bg-cyan-950 hover:bg-cyan-900 text-cyan-300 text-xs font-bold px-3.5 py-2.5 rounded-lg shadow-sm transition-all duration-200 hover:shadow flex items-center gap-1.5 border border-cyan-400"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Panel CMS ({currentUser.rol?.includes('Super') ? 'Dev' : 'Directiva'})</span>
+                <span>Panel Administrador ({currentUser.rol?.includes('Super') ? 'Desarrollador' : 'Directiva'})</span>
               </button>
             ) : (
               <button
@@ -196,7 +196,7 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
                 className="bg-cyan-950 text-cyan-300 p-2 rounded-lg text-xs font-bold flex items-center gap-1 border border-cyan-500"
               >
                 <Lock className="w-3.5 h-3.5 text-cyan-400" />
-                <span>CMS</span>
+                <span>Admin</span>
               </button>
             )}
             <button
@@ -245,7 +245,7 @@ export const Navbar = ({ institutional, currentUser, onOpenLogin, onOpenAdmin, a
                 className="w-full bg-cyan-950 text-cyan-300 text-sm font-bold py-2.5 rounded-lg text-center flex items-center justify-center gap-2 border border-cyan-400"
               >
                 <Lock className="w-4 h-4" />
-                <span>Administrar Sitio (CMS)</span>
+                <span>Panel de Administración</span>
               </button>
             ) : (
               <button

@@ -179,9 +179,9 @@ export const Footer = ({ institutional, onNavigate, onOpenLogin, currentUser, on
                 >
                   <span className="flex items-center gap-1.5">
                     <Lock className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Panel CMS Activo</span>
+                    <span>Panel de Administración</span>
                   </span>
-                  <span className="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">CMS</span>
+                  <span className="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">Admin</span>
                 </button>
               ) : (
                 <button

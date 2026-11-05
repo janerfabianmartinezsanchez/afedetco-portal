@@ -8,7 +8,7 @@ import {
 } from '../data/initialData';
 
 const KEYS = {
-  INSTITUTIONAL: 'fedetco_institutional_v7',
+  INSTITUTIONAL: 'fedetco_institutional_v8',
   NOTICIAS: 'fedetco_noticias_v7',
   GALERIA: 'fedetco_galeria_v7',
   FOROS: 'fedetco_foros_v7',

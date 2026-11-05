@@ -53,7 +53,7 @@ export const AdminLoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
             className="w-16 h-16 rounded-full border-2 border-amber-400 object-cover mx-auto shadow-md"
           />
           <h3 className="text-2xl font-black text-slate-900">
-            Panel CMS FEDETCO
+            Panel de Administración FEDETCO
           </h3>
           <p className="text-xs text-slate-500">
             Acceso administrativo para la gestión de noticias, fotos, foros y comunicados de la Federación de Etnoeducadores de Colombia.
