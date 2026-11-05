@@ -105,7 +105,7 @@ export const AdminDashboard = ({
             onClick={() => {
               onClose();
               setTimeout(() => {
-                const targetId = activeTab === 'galeria' ? 'galeria' : (activeTab === 'foros' ? 'foro' : 'noticias');
+                const targetId = activeTab === 'galeria' ? 'galeria' : (activeTab === 'foros' ? 'foro' : (activeTab === 'institucional' ? 'mision-vision' : (activeTab === 'banner' ? 'hero' : 'noticias')));
                 const el = document.getElementById(targetId);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }, 100);
@@ -222,7 +222,7 @@ export const AdminDashboard = ({
           >
             <span className="flex items-center gap-2.5">
               <Settings className="w-4 h-4 text-purple-400" />
-              <span>Misión, Visión & Sedes</span>
+              <span>¿Quiénes Somos? (Misión & Visión)</span>
             </span>
           </button>
 
